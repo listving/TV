@@ -1,4 +1,5 @@
 港·澳·台,#genre#
+无线财经体育,https://edge6a.v2h-cdn.com/jade/jade.stream/chunklist.m3u8
 无线财经,https://edge6a.v2h-cdn.com/jade/jade.stream/chunklist.m3u8
 翡翠台,https://edge6a.v2h-cdn.com/jade/jade.stream/chunklist.m3u8
 翡翠台,http://198.16.100.90:8278/Wlt/playlist.m3u8?tid=MC9C7523788875237888&ct=19225&tsum=fc74aa160d3ca61369c2e5f3ae79ee8e
