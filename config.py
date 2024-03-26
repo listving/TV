@@ -3,7 +3,7 @@ final_file = "result.txt"
 favorite_list = [
     "本港台",
     "无线财经",
-    "无线财经体育",
+    "无线体育财经",
     "翡翠台",
 ]
 favorite_page_num = 6
