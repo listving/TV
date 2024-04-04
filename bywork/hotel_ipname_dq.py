@@ -48,6 +48,7 @@ diqu = [
     "台湾"
     ]
 page = 1
+url_err = ""
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
@@ -81,7 +82,11 @@ for i in range(1, page + 1):
     try:
         # 创建一个Chrome WebDriver实例
         results = []
-        url = f"http://tonkiang.us/hoteliptv.php?page={i}&s=CCTV"
+        if url_err == "err":
+            url = f"http://tonkiang.us/hoteliptv.php?page={i}&s=CCTV"
+        else:
+            url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s=cctv"
+
         print(url)
         chrome_options = Options()
         chrome_options.add_argument('--headless')
@@ -95,11 +100,18 @@ for i in range(1, page + 1):
         driver.set_script_timeout(80)  # 5秒后超时
         # 使用WebDriver访问网页
         driver.get(url)  # 将网址替换为你要访问的网页地址
-        WebDriverWait(driver, 75).until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "div.tables")
-                )
-        )
+        try:
+            WebDriverWait(driver, 75).until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "div.tables")
+                    )
+            )
+        except:
+            print("页面加载失败")
+        if driver.current_url == url:
+            print("页面加载成功")
+        else:
+            print("页面加载失败")
         time.sleep(random.randint(3, 10))
         soup = BeautifulSoup(driver.page_source, "html.parser")
     
