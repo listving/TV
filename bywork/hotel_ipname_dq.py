@@ -48,7 +48,6 @@ diqu = [
     "台湾"
     ]
 page = 500
-url_err = ""
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
@@ -82,8 +81,8 @@ for i in range(1, page + 1):
     try:
         # 创建一个Chrome WebDriver实例
         results = []
-        if url_err == "err":
-            url = f"http://tonkiang.us/hoteliptv.php?page={i}&s=CCTV"
+        if is_odd_or_even(random.randint(1, 5000)):
+            url = f"http://tonkiang.us/hoteliptv.php?page={i}&s=cctv"
         else:
             url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s=cctv"
 
@@ -196,7 +195,7 @@ def worker(thread_url,counter_id):
         # 设置脚本执行超时
         driver.set_script_timeout(50)  # 5秒后超时
         # 使用WebDriver访问网页
-        if is_odd_or_even(random.randint(1, 200)):
+        if is_odd_or_even(random.randint(1, 5000)):
             page_url= f"http://tonkiang.us/9dlist2.php?s={in_url}"
         else:
             page_url= f"http://foodieguide.com/iptvsearch/alllist.php?s={in_url}"
