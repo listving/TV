@@ -47,7 +47,7 @@ diqu = [
     "上海",
     "台湾"
     ]
-page = 1
+page = 500
 url_err = ""
 def contains_any_value(text, diqu):
     for dq in diqu:
@@ -292,9 +292,9 @@ def worker(thread_url,counter_id):
                 if count > 0:        # 连接是多源组合
                     ip_list = urlsp.split("#")
                     for i in ip_list:
-                        infoList.append(f"{name}_{in_name},{i}")
+                        infoList.append(f"{dq_name}_{name}_{in_name},{i}")
                 else:
-                    infoList.append(f"{name}_{in_name},{urlsp}")
+                    infoList.append(f"{dq_name}_{name}_{in_name},{urlsp}")
                 # 释放锁
                 lock.release()
         print(f"=========================>>> Thread {in_url} save ok")
