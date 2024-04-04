@@ -48,7 +48,7 @@ jobs:
       - name: Run hotel_ipname_dq
         run: |
           python ${{ github.workspace }}/hotel_ipname_dq.py
-        working-directory: /path/to/tv/bywork
+        working-directory: /path/to/bywork
         
       - name: 提交更改
         run: |
