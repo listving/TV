@@ -47,6 +47,7 @@ diqu = [
     "上海",
     "台湾"
     ]
+page = 1
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
@@ -56,7 +57,7 @@ def contains_any_value(text, diqu):
 infoList = []
 urls_y = []
 resultslist = []
-page = 250
+
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
     ]
@@ -146,7 +147,7 @@ for i in range(1, page + 1):
                             elif "电信" in html_txt:
                                 ipname = '电信'
                             else:
-                                ipname ='其他'
+                                ipname ='电信'
                             dq_name = contains_any_value(html_txt, diqu)
                             resultslist.append(f"{ipname},{ip},{dq_name}")
                             print(f"{ipname},{ip},{dq_name}")
@@ -275,7 +276,13 @@ def worker(thread_url,counter_id):
             if "http" in urlsp:
                 # 获取锁
                 lock.acquire()
-                infoList.append(f"{name}_{in_name}_{dq_name},{urlsp}")
+                count = urlsp.count('#')
+                if count > 0:        # 连接是多源组合
+                    ip_list = urlsp.split("#")
+                    for i in ip_list:
+                        infoList.append(f"{name}_{in_name},{i}")
+                else:
+                    infoList.append(f"{name}_{in_name},{urlsp}")
                 # 释放锁
                 lock.release()
         print(f"=========================>>> Thread {in_url} save ok")
