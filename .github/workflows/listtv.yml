@@ -46,9 +46,7 @@ jobs:
           pip install beautifulsoup4
         
       - name: Run hotel_ipname_dq
-        run: |
-          python ${{ github.workspace }}/bywork/hotel_ipname_dq.py
-        working-directory: ${{ github.workspace }}/data
+        run: python ${{ github.workspace }}/bywork/hotel_ipname_dq.py
         
       - name: 提交更改
         run: |
