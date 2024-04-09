@@ -1,7 +1,7 @@
 import subprocess
 def check_video_source_with_ffmpeg(url):
     cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
-           '-show_entries', 'stream=codec_name,width=width,height=height,bit_rate=bit_rate', '-of',
+           '-show_entries', 'codec_name,width,height,bit_rate', '-of',
            'default=noprint_wrappers=1:nokey=1', url]
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
