@@ -7,10 +7,11 @@ def check_video_source_with_ffmpeg(url):
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
         output = result.stdout
-        print("ffprobe output:")
-        print(output)  # 打印 ffprobe 的输出以进行调试
         
-        lines = output.split('\n')
+        # 清理输出，去除可能的重复行
+        lines = [line for line in output.split('\n') if line]
+        lines = [line for i, line in enumerate(lines) if line != lines[i-1]]  # 去除重复行
+        
         codec_name = None
         width = None
         height = None
@@ -26,26 +27,22 @@ def check_video_source_with_ffmpeg(url):
             elif 'bit_rate' in line:
                 bit_rate = int(line.split('=')[1].strip())
         
-        if codec_name is None or width is None or height is None or bit_rate is None:
+        if codec_name and width and height:
+            return codec_name, width, height, bit_rate
+        else:
             raise ValueError("Failed to extract all required information from ffprobe output.")
-        
-        return codec_name, width, height, bit_rate
-    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
-        print(f"An error occurred: {e}")
-        return None
-    except ValueError as e:
-        print(f"An error occurred while parsing ffprobe output: {e}")
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return None
 
 if __name__ == "__main__":
     video_url = 'http://59.55.35.219:20000/hls/1/index.m3u8'  # 替换成你的视频URL
-    result = check_video_source_with_ffmpeg(video_url)
-    if result:
-        codec_name, width, height, bit_rate = result
-        print(f"Video source seems to be available.")
-        print(f"Codec Name: {codec_name}")
-        print(f"Resolution: {width}x{height}")
-        print(f"Bit Rate: {bit_rate} bps")
-    else:
-        print("There is an issue with the video source.")
+    try:
+        codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
+        if codec_name and width and height:
+            print(f"Video source seems to be available. Codec: {codec_name}, Resolution: {width}x{height}, Bit Rate: {bit_rate} bps")
+        else:
+            print("There is an issue with the video source.")
+    except ValueError as e:
+        print(f"An error occurred while parsing ffprobe output: {e}")
+
         
