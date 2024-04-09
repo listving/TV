@@ -31,11 +31,13 @@ def check_video_source_with_ffmpeg(url):
 def process_video(video_url):
     try:
         codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
-        print(f"Video source information for {video_url}: Codec={codec_name}, Width={width}, Height={height}, Bit Rate={bit_rate}")
+        return (codec_name, width, height, bit_rate)
     except ValueError as e:
         print(f"Error parsing ffprobe output for {video_url}: {e}")
+        return (None, None, None, None)
     except Exception as e:
         print(f"An error occurred for {video_url}: {e}")
+        return (None, None, None, None)
 
 # 视频URL列表
 video_urls = [
@@ -47,15 +49,18 @@ video_urls = [
 max_workers = 5
 
 # 使用ThreadPoolExecutor创建线程池
+results = []
 with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
     # 提交任务到线程池
     future_to_url = {executor.submit(process_video, url): url for url in video_urls}
     for future in concurrent.futures.as_completed(future_to_url):
         url = future_to_url[future]
         try:
-            # 这里可以添加其他处理逻辑，例如获取并处理结果
-            print("===========================================")
-            print(url)
+            # 获取任务返回的结果（分辨率和码率）
+            resolution_and_bitrate = future.result()
+            # 处理或记录结果
+            print(f"Results for {url}: {resolution_and_bitrate}")
+            results.append(resolution_and_bitrate)
         except Exception as exc:
             print(f'{url} generated an exception: {exc}')
 
