@@ -2,8 +2,8 @@ import subprocess
 import re
 
 # 流媒体的URL
-stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
-
+# stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
+stream_url = 'http://222.218.158.31:8181/tsfile/live/0007_1.m3u8'
 # 使用ffprobe分析流媒体
 ffprobe_command = ['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height,r_frame_rate,codec_name', '-of', 'default=noprint_wrappers=1:nokey=1', stream_url]
 
