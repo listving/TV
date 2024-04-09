@@ -11,6 +11,7 @@ def check_video_source_with_ffmpeg(url):
         
         lines = output.split('\n')
         print("－－－－－－－－－－－－－－－－－－－－－－－－")
+        lines = set(lines)
         print(lines)
         codec_name = None
         width = None
