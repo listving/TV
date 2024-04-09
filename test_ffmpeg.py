@@ -10,7 +10,7 @@ ffprobe_command = ['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_en
 try:
     # 执行ffprobe命令并捕获输出
     ffprobe_output = subprocess.check_output(ffprobe_command, stderr=subprocess.STDOUT)
-    
+    print(ffprobe_output)
     # 分析输出以获取视频质量信息
     info = {}
     for line in ffprobe_output.decode('utf-8').split('\n'):
