@@ -1,14 +1,21 @@
 import subprocess
 
 def check_video_source_with_ffmpeg(url):
-    # 提取分辨率和码率
     cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
            '-show_entries', 'stream=codec_name,width,height,bit_rate', '-of',
            'default=noprint_wrappers=1:nokey=1', url]
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
         output = result.stdout
+        print("ffprobe output:")
+        print(output)  # 打印 ffprobe 的输出以进行调试
+        
         lines = output.split('\n')
+        codec_name = None
+        width = None
+        height = None
+        bit_rate = None
+        
         for line in lines:
             if 'codec_name' in line:
                 codec_name = line.split('=')[1].strip()
@@ -19,10 +26,15 @@ def check_video_source_with_ffmpeg(url):
             elif 'bit_rate' in line:
                 bit_rate = int(line.split('=')[1].strip())
         
+        if codec_name is None or width is None or height is None or bit_rate is None:
+            raise ValueError("Failed to extract all required information from ffprobe output.")
+        
         return codec_name, width, height, bit_rate
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        print(f"An error occurred: {e}")
         return None
-    except subprocess.TimeoutExpired:
+    except ValueError as e:
+        print(f"An error occurred while parsing ffprobe output: {e}")
         return None
 
 if __name__ == "__main__":
