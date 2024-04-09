@@ -37,5 +37,5 @@ def check_live_stream(stream_url):
         print(f"发生错误: {e}")
 
 # 使用你的直播源URL替换这里的stream_url
-stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
+stream_url = 'http://223.10.34.224:8083/udp/239.1.1.16:8016'
 check_live_stream(stream_url)
