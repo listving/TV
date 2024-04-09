@@ -69,10 +69,15 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             resolution_and_bitrate = future.result()
             # 处理或记录结果
             print(f"Results for {url}: {resolution_and_bitrate}")
-            results.append(resolution_and_bitrate)
+            codec_name, width, height, bit_rate = resolution_and_bitrate
+            if codec_name == 'h264' and width == 1920:
+                results.append(url)
         except Exception as exc:
             print(f'{url} generated an exception: {exc}')
 
 
-
+with open("cctv.txt", 'w', encoding='utf-8') as file:
+    file.write('【  央视清洗后  】,#genre#\n')
+    for result in results:
+        file.write(f"{result}")
 
