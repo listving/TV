@@ -1,3 +1,4 @@
+import concurrent.futures
 import subprocess
 import re
 
@@ -27,13 +28,37 @@ def check_video_source_with_ffmpeg(url):
     except Exception as e:
         return f"An unexpected error occurred: {e}"
 
-# 使用函数
-try:
-    video_url = 'http://59.55.35.219:20000/hls/1/index.m3u8'  # 替换成你的视频URL
-    codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
-    print(f"Video source information: Codec={codec_name}, Width={width}, Height={height}, Bit Rate={bit_rate}")
-except ValueError as e:
-    print(f"Error parsing ffprobe output: {e}")
-except Exception as e:
-    print(f"An error occurred: {e}")
+def process_video(video_url):
+    try:
+        codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
+        print(f"Video source information for {video_url}: Codec={codec_name}, Width={width}, Height={height}, Bit Rate={bit_rate}")
+    except ValueError as e:
+        print(f"Error parsing ffprobe output for {video_url}: {e}")
+    except Exception as e:
+        print(f"An error occurred for {video_url}: {e}")
+
+# 视频URL列表
+video_urls = [
+    'http://59.55.35.219:20000/hls/1/index.m3u8',  # 替换成你的视频URL
+    'http://221.5.12.130:2223/hls/69/index.m3u8'
+]
+
+# 最大线程数
+max_workers = 5
+
+# 使用ThreadPoolExecutor创建线程池
+with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+    # 提交任务到线程池
+    future_to_url = {executor.submit(process_video, url): url for url in video_urls}
+    for future in concurrent.futures.as_completed(future_to_url):
+        url = future_to_url[future]
+        try:
+            # 这里可以添加其他处理逻辑，例如获取并处理结果
+            print("===========================================")
+            print(url)
+        except Exception as exc:
+            print(f'{url} generated an exception: {exc}')
+
+
+
 
