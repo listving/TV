@@ -6,8 +6,8 @@ def check_video_source_with_ffmpeg(url):
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
         output = result.stdout
-        print("ffprobe output:")
-        print(output)  # 打印 ffprobe 的输出以进行调试
+        # print("ffprobe output:")
+        # print(output)  # 打印 ffprobe 的输出以进行调试
         
         lines = output.split('\n')
         codec_name = None
