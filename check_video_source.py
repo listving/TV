@@ -50,7 +50,7 @@ video_urls = [
 ]
 
 # 最大线程数
-max_workers = 5
+max_workers = 50
 
 # 使用ThreadPoolExecutor创建线程池
 results = []
