@@ -11,7 +11,7 @@ def check_live_stream(stream_url):
         '-probesize', '10M',
         '-analyzeduration', '10M',
         '-i', stream_url,
-        '-ss', '00:00:02',
+        '-ss', '00:00:05',
         '-f', 'null',
         '-v', 'error'
     ]
