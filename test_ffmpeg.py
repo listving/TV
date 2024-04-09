@@ -31,7 +31,7 @@ def check_video_source_with_ffmpeg(url):
 
 # 使用函数
 try:
-    video_url = 'http://59.55.35.219:20000/hls/1/index.m3u8'  # 替换成你的视频URL
+    video_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'  # 替换成你的视频URL
     codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
     print(f"Video source information: Codec={codec_name}, Width={width}, Height={height}, Bit Rate={bit_rate}")
 except ValueError as e:
