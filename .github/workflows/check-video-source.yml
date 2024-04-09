@@ -29,3 +29,11 @@ jobs:
     - name: Check video source
       run: |
          python ${{ github.workspace }}/check_video_source.py  # 执行Python脚本并传递视频URL作为参数
+
+    - name: 提交更改
+      run: |
+        git config --local user.name "listving" 
+        git config --local user.email "52348899@qq.com"
+        git add .
+        git commit *.txt -m "Add generated file"
+        git push -f
