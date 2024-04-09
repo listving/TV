@@ -1,40 +1,41 @@
 import subprocess
-import re
 
-# 直播流的URL
-stream_url = 'http://223.10.34.224:8083/udp/239.1.1.16:8016'
+def check_live_stream(stream_url):
+    # FFmpeg命令，尝试以最低延迟捕获直播流的前几帧
+    # -probesize和-analyzeduration选项用于快速分析流
+    # -ss 00:00:02表示尝试从流中捕获前2秒的数据
+    # -f null表示不输出到文件，而是输出到stdout或stderr
+    # -v error表示只输出错误信息
+    ffmpeg_command = [
+        'ffmpeg',
+        '-probesize', '10M',
+        '-analyzeduration', '10M',
+        '-i', stream_url,
+        '-ss', '00:00:02',
+        '-f', 'null',
+        '-v', 'error'
+    ]
 
-# ffmpeg命令，用于获取直播流的详细信息
-ffmpeg_command = ['ffmpeg', '-i', stream_url, '-c', 'copy', '-f', 'null', '-']
+    try:
+        # 运行FFmpeg命令并捕获输出
+        completed_process = subprocess.run(ffmpeg_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+        
+        # 检查命令的退出码。如果为0，表示成功。否则，表示出错。
+        if completed_process.returncode == 0:
+            print("直播源可以正常播放。")
+        else:
+            # 如果FFmpeg输出错误信息，打印出来
+            error_output = completed_process.stderr.decode('utf-8')
+            if error_output:
+                print("直播源可能存在问题或加密:")
+                print(error_output)
+            else:
+                print("无法确定直播源状态。")
 
-# 执行ffmpeg命令，并捕获其输出
-process = subprocess.Popen(ffmpeg_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    except Exception as e:
+        # 如果发生其他异常（如网络问题、命令不存在等），也打印出来
+        print(f"发生错误: {e}")
 
-# 正则表达式，用于匹配码率信息
-bitrate_pattern = re.compile(r'bitrate=\s*(\d+)kbits/s')
-
-# 初始化码率变量
-bitrate = None
-
-# 读取ffmpeg的输出
-for line in iter(process.stdout.readline, b''):
-    # 将字节解码为字符串
-    line = line.decode('utf-8')
-    # 打印输出，可选
-    print(line, end='')
-    
-    # 使用正则表达式搜索码率
-    match = bitrate_pattern.search(line)
-    if match:
-        # 找到码率信息，提取并转换为整数
-        bitrate = int(match.group(1))
-        break
-
-# 确保ffmpeg进程结束
-process.communicate()
-
-# 输出码率
-if bitrate:
-    print(f'直播流的码率是: {bitrate} kbps')
-else:
-    print('无法获取直播流的码率')
+# 使用你的直播源URL替换这里的stream_url
+stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
+check_live_stream(stream_url)
