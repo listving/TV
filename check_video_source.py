@@ -10,10 +10,9 @@ def check_video_source_with_ffmpeg(url):
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
         output = result.stdout
-        
+        print(output)
         # 使用正则表达式匹配并提取信息
-        # pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(N/A)?$'
-        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+)kbps'
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(N/A)?$'
         matches = re.findall(pattern, output, re.MULTILINE)
         
         if matches:
