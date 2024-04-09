@@ -52,14 +52,7 @@ def process_video(video_url):
 with open("cctv.txt", 'r', encoding='utf-8') as file:
     video_urls = file.readlines()
 # 视频URL列表
-# video_urls = [
-    'http://59.55.35.219:20000/hls/1/index.m3u8',  # 替换成你的视频URL
-    'http://221.5.12.130:2223/hls/69/index.m3u8',
-    'http://219.137.29.213:4433/tsfile/live/0002_1.m3u8',
-    'http://1.193.57.68:8800/rtp/239.16.20.1:10010',
-    'http://221.198.174.113:8888/udp/225.1.1.120:5002',
-    'http://182.149.106.41:8888/udp/239.93.1.63:5140'
-]
+
 
 # 最大线程数
 max_workers = 50
