@@ -27,7 +27,5 @@ jobs:
         sudo apt-get install -y ffmpeg
 
     - name: Check video source
-      env:
-        VIDEO_URL: "http://59.55.35.219:20000/hls/1/index.m3u8"  # 设置环境变量，这将传递给脚本
       run: |
-        python check_video_source.py "$VIDEO_URL"  # 执行Python脚本并传递视频URL作为参数
+        check_video_source.py  # 执行Python脚本并传递视频URL作为参数
