@@ -9,11 +9,9 @@ def check_video_source_with_ffmpeg(url):
         print("ffprobe output:")
         print(output)  # 打印 ffprobe 的输出以进行调试
         
-        # lines = output.split('\n')
-        # 清理输出，去除可能的重复行
-        lines = [line for line in output.split('\n') if line]
-        lines = [line for i, line in enumerate(lines) if line != lines[i-1]]  # 去除重复行
- 
+        lines = output.split('\n')
+        print("－－－－－－－－－－－－－－－－－－－－－－－－")
+        print(lines)
         codec_name = None
         width = None
         height = None
