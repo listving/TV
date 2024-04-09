@@ -11,13 +11,14 @@ def check_video_source_with_ffmpeg(url):
         output = result.stdout
         print(output)
         # 使用正则表达式匹配并提取信息
-        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(N/A)?$\s+(\d+/\d+)'
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)\s+(N/A)?$'
         matches = re.findall(pattern, output, re.MULTILINE)
-        
+        print("========================================================")
+        print(matches)
         if matches:
-            codec_name, width, height, bit_rate, r_frame_rate = matches[0]
-            print(codec_name, width, height, bit_rate, r_frame_rate)
-            return codec_name, int(width), int(height), bit_rate if bit_rate else None, r_frame_rate if r_frame_rate else None
+            codec_name, width, height, r_frame_rate, bit_rate = matches[0]
+            print(codec_name, width, height, r_frame_rate, bit_rate)
+            return codec_name, int(width), int(height), r_frame_rate if r_frame_rate else None, bit_rate if bit_rate else None
         else:
             raise ValueError("No valid matches found in ffprobe output.")
     
