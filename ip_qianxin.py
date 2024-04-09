@@ -24,7 +24,45 @@ spider_cfg = {
 url_list = []
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
 se = requests.Session()
+# 测试分辨率
+def check_video_source_with_ffmpeg(url):
+    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+           '-show_entries', 'stream=codec_name,width,height,r_frame_rate', '-of',
+           'default=noprint_wrappers=1:nokey=1', url]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
+        output = result.stdout
+        # print(output)
+        # 使用正则表达式匹配并提取信息
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)?$'
+        matches = re.findall(pattern, output, re.MULTILINE)
+        
+        if matches:
+            codec_name, width, height, r_frame_rate = matches[0]
+            return codec_name, int(width), int(height), int(eval(r_frame_rate))
+        else:
+            raise ValueError("No valid matches found in ffprobe output.")
+    
+    except subprocess.CalledProcessError as e:
+        return f"ffprobe command failed with error: {e}"
+    except subprocess.TimeoutExpired:
+        return "ffprobe command timed out."
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
+def process_video(video_url):
+    channel_name, channel_url, speed = video_url
+    try:
+        codec_name, width, height, r_frame_rate = check_video_source_with_ffmpeg(channel_url)
+        return (codec_name, width, height, r_frame_rate)
+    except ValueError as e:
+        print(f"Error parsing ffprobe output for {video_url}: {e}")
+        return (None, None, None, None)
+    except Exception as e:
+        print(f"An error occurred for {video_url}: {e}")
+        return (None, None, None, None)
+        
 def analysis_m3u(data):
     items = data.split("\n")
     items = [item for item in items if item.strip()]
@@ -154,6 +192,7 @@ for i in range(1, spider_cfg['page'] + 1):
             print(f'无法连接并超时----------------------->\t{lin}\nError: {e}')
             continue
         time.sleep(5)
+        
 flattened_list = set(flattened_list)
 results = []
 for line in flattened_list:
@@ -166,45 +205,6 @@ for line in flattened_list:
                 result = channel_name, channel_url, "0.001 MB/s"
                 results.append(result)
                 
-# 测试分辨率
-def check_video_source_with_ffmpeg(url):
-    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
-           '-show_entries', 'stream=codec_name,width,height,r_frame_rate', '-of',
-           'default=noprint_wrappers=1:nokey=1', url]
-    
-    try:
-        result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
-        output = result.stdout
-        # print(output)
-        # 使用正则表达式匹配并提取信息
-        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)?$'
-        matches = re.findall(pattern, output, re.MULTILINE)
-        
-        if matches:
-            codec_name, width, height, r_frame_rate = matches[0]
-            return codec_name, int(width), int(height), int(eval(r_frame_rate))
-        else:
-            raise ValueError("No valid matches found in ffprobe output.")
-    
-    except subprocess.CalledProcessError as e:
-        return f"ffprobe command failed with error: {e}"
-    except subprocess.TimeoutExpired:
-        return "ffprobe command timed out."
-    except Exception as e:
-        return f"An unexpected error occurred: {e}"
-
-def process_video(video_url):
-    channel_name, channel_url, speed = video_url
-    try:
-        codec_name, width, height, r_frame_rate = check_video_source_with_ffmpeg(channel_url)
-        return (codec_name, width, height, r_frame_rate)
-    except ValueError as e:
-        print(f"Error parsing ffprobe output for {video_url}: {e}")
-        return (None, None, None, None)
-    except Exception as e:
-        print(f"An error occurred for {video_url}: {e}")
-        return (None, None, None, None)
-
 # 最大线程数
 max_workers = 50
 video_urls = set(results)
