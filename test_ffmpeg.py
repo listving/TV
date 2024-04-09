@@ -8,10 +8,10 @@ def check_live_stream(stream_url):
     # -v error表示只输出错误信息
     ffmpeg_command = [
         'ffmpeg',
-        '-probesize', '10M',
-        '-analyzeduration', '10M',
+        '-probesize', '20M',
+        '-analyzeduration', '20M',
         '-i', stream_url,
-        '-ss', '00:00:05',
+        '-ss', '00:00:10',
         '-f', 'null',
         '-v', 'error'
     ]
