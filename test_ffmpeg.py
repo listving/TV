@@ -8,7 +8,7 @@ stream_url = 'http://223.10.34.224:8083/udp/239.1.1.16:8016'
 ffmpeg_command = ['ffmpeg', '-i', stream_url, '-c', 'copy', '-f', 'null', '-']
 
 # 设置超时时间（例如：10秒）
-timeout = 10
+timeout = 30
 
 try:
     # 执行ffmpeg命令，并捕获其输出
