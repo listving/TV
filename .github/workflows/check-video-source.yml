@@ -16,7 +16,13 @@ jobs:
       uses: actions/setup-python@v2  # 设置Python环境
       with:
         python-version: 3.x  # 使用Python 3
-
+    # 安装所需的包
+    - name: Install dependencies
+      run: |
+        pip install selenium requests futures eventlet
+        pip install beautifulsoup4
+        pip install chardet
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -28,5 +34,5 @@ jobs:
 
     - name: Check video source
       run: |
-         python ${{ github.workspace }}/ip_qianxin.py  # 执行Python脚本并传递视频URL作为参数
+         python ${{ github.workspace }}/ip_qianxin.py  # 执行Python脚本
 
