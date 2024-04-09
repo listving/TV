@@ -2,7 +2,7 @@ import subprocess
 import re
 
 # 直播流的URL
-stream_url = 'http://222.218.158.31:8181/tsfile/live/0010_1.m3u8'
+stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
 
 # ffmpeg命令，用于获取直播流的详细信息
 ffmpeg_command = ['ffmpeg', '-i', stream_url, '-c', 'copy', '-f', 'null', '-']
