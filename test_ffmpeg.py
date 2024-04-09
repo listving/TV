@@ -11,7 +11,8 @@ def check_video_source_with_ffmpeg(url):
         output = result.stdout
 
         # 使用正则表达式匹配并提取信息
-        pattern = r'^(codec_name=h264)\s+(width=(\d+))\s+(height=(\d+))\s+(r_frame_rate=(\d+/\d+))\s+(bit_rate=(\d+))'
+        # 注意：这个正则表达式需要根据实际的ffprobe输出进行调整
+        pattern = r'^(codec_name=h264)\s+width=(\d+)\s+height=(\d+)\s+r_frame_rate=(\d+/\d+)\s+bit_rate=(\d+)'
         matches = re.findall(pattern, output, re.MULTILINE)
 
         if matches:
