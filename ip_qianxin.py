@@ -165,7 +165,7 @@ for line in flattened_list:
                 channel_name, channel_url = line.split(',')
                 result = channel_name, channel_url, "0.001 MB/s"
                 results.append(result)
-flattened_list = set(results)
+                
 # 测试分辨率
 def check_video_source_with_ffmpeg(url):
     cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
@@ -226,9 +226,9 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         except Exception as exc:
             print(f'{url} generated an exception: {exc}')
 
-flattened_list = sorted(results)
+result = sorted(results)
 with open("ip_qianxin.txt", 'w', encoding='utf-8') as file:
-    for line in flattened_list:
+    for line in result:
         try:
             channel_name, channel_url, speed = line
             file.write(f"{channel_name},{channel_url}\n")
