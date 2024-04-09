@@ -28,7 +28,7 @@ jobs:
 
     - name: Check video source
       run: |
-         python ${{ github.workspace }}/check_video_source.py  # 执行Python脚本并传递视频URL作为参数
+         python ${{ github.workspace }}/test_ffmpeg.py  # 执行Python脚本并传递视频URL作为参数
 
     - name: 提交更改
       run: |
