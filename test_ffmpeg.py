@@ -11,7 +11,7 @@ def check_video_source_with_ffmpeg(url):
         output = result.stdout
         print(output)
         # 使用正则表达式匹配并提取信息
-        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)?$'
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/)?$'
         matches = re.findall(pattern, output, re.MULTILINE)
         print("========================================================")
         print(matches)
