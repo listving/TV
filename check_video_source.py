@@ -8,7 +8,7 @@ def check_video_source_with_ffmpeg(url):
            'default=noprint_wrappers=1:nokey=1', url]
     
     try:
-        result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
+        result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
         output = result.stdout
         
         # 使用正则表达式匹配并提取信息
