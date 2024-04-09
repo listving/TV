@@ -42,7 +42,8 @@ def process_video(video_url):
 # 视频URL列表
 video_urls = [
     'http://59.55.35.219:20000/hls/1/index.m3u8',  # 替换成你的视频URL
-    'http://221.5.12.130:2223/hls/69/index.m3u8'
+    'http://221.5.12.130:2223/hls/69/index.m3u8',
+    'http://219.137.29.213:4433/tsfile/live/0002_1.m3u8'
 ]
 
 # 最大线程数
