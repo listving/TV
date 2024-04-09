@@ -204,6 +204,8 @@ for line in flattened_list:
                 channel_name, channel_url = line.split(',')
                 result = channel_name, channel_url, "0.001 MB/s"
                 results.append(result)
+    except:
+        print(f'错误--for line in flattened_list:--------------------->\t{line}')
                 
 # 最大线程数
 max_workers = 50
