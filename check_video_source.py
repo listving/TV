@@ -29,18 +29,30 @@ def check_video_source_with_ffmpeg(url):
         return f"An unexpected error occurred: {e}"
 
 def process_video(video_url):
-    try:
-        codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
-        return (codec_name, width, height, bit_rate)
-    except ValueError as e:
-        print(f"Error parsing ffprobe output for {video_url}: {e}")
+    line = video_url.strip()
+    count = line.count(',')
+    if count == 1:
+        if line:
+            channel_name, channel_url = line.split(',')
+            if 'http' in channel_url:
+                try:
+                    codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(channel_url)
+                    return (codec_name, width, height, bit_rate)
+                except ValueError as e:
+                    print(f"Error parsing ffprobe output for {video_url}: {e}")
+                    return (None, None, None, None)
+                except Exception as e:
+                    print(f"An error occurred for {video_url}: {e}")
+                    return (None, None, None, None)
+            else:
+                return (None, None, None, None)
+    else:
         return (None, None, None, None)
-    except Exception as e:
-        print(f"An error occurred for {video_url}: {e}")
-        return (None, None, None, None)
-
+# 打开文件
+with open("cctv.txt", 'r', encoding='utf-8') as file:
+    video_urls = file.readlines()
 # 视频URL列表
-video_urls = [
+# video_urls = [
     'http://59.55.35.219:20000/hls/1/index.m3u8',  # 替换成你的视频URL
     'http://221.5.12.130:2223/hls/69/index.m3u8',
     'http://219.137.29.213:4433/tsfile/live/0002_1.m3u8',
