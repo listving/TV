@@ -230,12 +230,8 @@ flattened_list = sorted(results)
 with open("ip_qianxin.txt", 'w', encoding='utf-8') as file:
     for line in flattened_list:
         try:
-            line = line.strip()
-            count = line.count(',')
-            if count == 1:
-                if line:
-                    channel_name, channel_url = line.split(',')
-                    file.write(f"{channel_name},{channel_url}\n")
+            channel_name, channel_url, speed = line
+            file.write(f"{channel_name},{channel_url}\n")
         except:
             print(f'错误----------------------->\t{line}')
             continue
