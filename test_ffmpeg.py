@@ -18,7 +18,7 @@ def check_video_source_with_ffmpeg(url):
         if matches:
             codec_name, width, height, r_frame_rate = matches[0]
             print(codec_name, width, height, r_frame_rate)
-            return codec_name, int(width), int(height), r_frame_rate if r_frame_rate else None
+            return codec_name, int(width), int(height), int(r_frame_rate)
         else:
             raise ValueError("No valid matches found in ffprobe output.")
     
