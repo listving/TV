@@ -3,30 +3,24 @@ import re
 
 def check_video_source_with_ffmpeg(url):
     cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
-           '-show_entries', 'stream=codec_name,width,height,r_frame_rate,bit_rate', '-of',
+           '-show_entries', 'stream=codec_name,width,height,bit_rate,r_frame_rate', '-of',
            'default=noprint_wrappers=1:nokey=1', url]
-
+    
     try:
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
         output = result.stdout
-
+        print(output)
         # 使用正则表达式匹配并提取信息
-        # 注意：这个正则表达式需要根据实际的ffprobe输出进行调整
-        pattern = r'^(codec_name=h264)\s+width=(\d+)\s+height=(\d+)\s+r_frame_rate=(\d+/\d+)\s+bit_rate=(\d+)'
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(N/A)?$\s+(\d+/\d+)'
         matches = re.findall(pattern, output, re.MULTILINE)
-
+        
         if matches:
-            # 假设我们只关心第一个匹配项（视频流）
-            codec_name, width, height, frame_rate, bit_rate = matches[0]
-            print(f"编码格式: {codec_name.split('=')[-1]}")
-            print(f"分辨率: {width.split('=')[-1]}x{height.split('=')[-1]}")
-            print(f"帧率: {frame_rate.split('=')[-1]}")
-            print(f"比特率: {bit_rate.split('=')[-1]}")
-            return codec_name.split('=')[-1], int(width.split('=')[-1]), int(height.split('=')[-1]), int(bit_rate.split('=')[-1]), frame_rate.split('=')[-1]
+            codec_name, width, height, bit_rate, r_frame_rate = matches[0]
+            print(codec_name, width, height, bit_rate, r_frame_rate)
+            return codec_name, int(width), int(height), bit_rate if bit_rate else None, r_frame_rate if r_frame_rate else None
         else:
-            print("未找到匹配的视频流信息。")
-            return None
-
+            raise ValueError("No valid matches found in ffprobe output.")
+    
     except subprocess.CalledProcessError as e:
         return f"ffprobe command failed with error: {e}"
     except subprocess.TimeoutExpired:
