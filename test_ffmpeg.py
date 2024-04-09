@@ -1,39 +1,40 @@
 import subprocess
 import re
 
-# 流媒体的URL
-# stream_url = 'http://14.19.199.43:8089/hls/28/index.m3u8'
-stream_url = 'http://222.218.158.31:8181/tsfile/live/0005_1.m3u8'
+def check_video_source_with_ffmpeg(url):
+    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+           '-show_entries', 'stream=codec_name,width,height,r_frame_rate,bit_rate', '-of',
+           'default=noprint_wrappers=1:nokey=1', url]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, check=True, timeout=10, text=True)
+        output = result.stdout
+        print("-------------------------------------------------------------------------------------------------------------------------------------------")
+        print(output)
+        print("-------------------------------------------------------------------------------------------------------------------------------------------")
+        # 使用正则表达式匹配并提取信息
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(N/A)?$'
+        matches = re.findall(pattern, output, re.MULTILINE)
+        
+        if matches:
+            codec_name, width, height, bit_rate = matches[0]
+            return codec_name, int(width), int(height), bit_rate if bit_rate else None
+        else:
+            raise ValueError("No valid matches found in ffprobe output.")
+    
+    except subprocess.CalledProcessError as e:
+        return f"ffprobe command failed with error: {e}"
+    except subprocess.TimeoutExpired:
+        return "ffprobe command timed out."
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
-# 使用ffprobe分析流媒体
-ffprobe_command = ['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=codec_name,width,height,bit_rate', '-of', 'default=noprint_wrappers=1:nokey=1', stream_url]
-
+# 使用函数
 try:
-    # 执行ffprobe命令并捕获输出
-    ffprobe_output = subprocess.check_output(ffprobe_command, stderr=subprocess.STDOUT)
-    print(ffprobe_output)
-    # 使用正则表达式解析输出
-    width_match = re.search(r'width=(\d+)', ffprobe_output.decode('utf-8'))
-    height_match = re.search(r'height=(\d+)', ffprobe_output.decode('utf-8'))
-    r_frame_rate_match = re.search(r'r_frame_rate=(\d+/\d+)', ffprobe_output.decode('utf-8'))
-    codec_name_match = re.search(r'codec_name=(.+)', ffprobe_output.decode('utf-8'))
-    
-    # 提取并输出视频质量信息
-    info = {
-        'width': width_match.group(1) if width_match else 'N/A',
-        'height': height_match.group(1) if height_match else 'N/A',
-        'r_frame_rate': r_frame_rate_match.group(1) if r_frame_rate_match else 'N/A',
-        'codec_name': codec_name_match.group(1) if codec_name_match else 'N/A'
-    }
-    
-    print(f"分辨率: {info['width']}x{info['height']}")
-    print(f"帧率: {info['r_frame_rate']}")
-    print(f"编码格式: {info['codec_name']}")
-    
-except subprocess.CalledProcessError as e:
-    # 如果ffprobe命令执行失败，输出错误信息
-    print(f"无法分析流媒体: {e.output.decode('utf-8')}")
-
+    video_url = 'http://59.55.35.219:20000/hls/1/index.m3u8'  # 替换成你的视频URL
+    codec_name, width, height, bit_rate = check_video_source_with_ffmpeg(video_url)
+    print(f"Video source information: Codec={codec_name}, Width={width}, Height={height}, Bit Rate={bit_rate}")
+except ValueError as e:
+    print(f"Error parsing ffprobe output: {e}")
 except Exception as e:
-    # 捕获其他异常
-    print(f"发生异常: {str(e)}")
+    print(f"An error occurred: {e}")
