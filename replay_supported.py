@@ -1,6 +1,6 @@
 import requests
 import threading
-
+live_urls = []
 with open("cctv.txt", 'r', encoding='utf-8') as file:
     live_urls = file.readlines()
     file.close()
@@ -13,6 +13,7 @@ def check_live_replay(live_url, timeout=5):  # 添加timeout参数，默认为5�
         if line:
             channel_name, api_url = line.split(',')
             api_url = api_url + '/api/check_replay'
+            print(channel_name,api_url)
             try:
                 # 发起请求并设置超时时间
                 response = requests.get(api_url, timeout=timeout)
@@ -58,7 +59,7 @@ def check_live_replays_concurrently(live_urls, num_threads, timeout=5):
 num_threads = 50
 
 # 超时时间（秒）
-timeout = 10
+timeout = 5
 
 # 并发检查回看功能
 check_live_replays_concurrently(live_urls, num_threads, timeout)
