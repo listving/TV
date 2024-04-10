@@ -1,4 +1,3 @@
-
 import random
 import concurrent.futures
 from selenium.webdriver.chrome.options import Options
