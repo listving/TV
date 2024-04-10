@@ -53,9 +53,9 @@ def worker():
                 ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
     
                 # 多获取的视频数据进行5秒钟限制
-                with eventlet.Timeout(10, False):
+                with eventlet.Timeout(5, False):
                     start_time = time.time()
-                    content = requests.get(ts_url,headers=headers, timeout=(3,5), stream=True).content
+                    content = requests.get(ts_url,headers=headers, timeout=(3,4), stream=True).content
                     end_time = time.time()
                     response_time = (end_time - start_time) * 1
     
@@ -87,7 +87,7 @@ def worker():
         else:
             try:
                 now=time.time()
-                chunk_size = 5242880
+                chunk_size = 3145728
                 res=se.get(channel_url,headers=headers,stream=True,timeout=5)
                 if res.status_code==200:
                     total_received = 0
@@ -106,7 +106,7 @@ def worker():
                                     response_time = (time.time()-now) * 1
                                     download_speed = chunk_len / response_time / 1024
                                     normalized_speed = min(max(download_speed / 1024, 0.001), 100)
-                                    if response_time > 4.9:
+                                    if response_time > 2.8:
                                         result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
                                         # 获取锁
                                         lock.acquire()
