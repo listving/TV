@@ -111,7 +111,7 @@ def worker():
         else:
             try:
                 now=time.time()
-                chunk_size = 5242880
+                chunk_size = 3145728
                 res=se.get(channel_url,headers=headers,stream=True,timeout=5)
                 if res.status_code==200:
                     total_received = 0
@@ -130,7 +130,7 @@ def worker():
                                     response_time = (time.time()-now) * 1
                                     download_speed = chunk_len / response_time / 1024
                                     normalized_speed = min(max(download_speed / 1024, 0.001), 100)
-                                    if response_time > 3:
+                                    if response_time > 2.8:
                                         result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
                                         # 获取锁
                                         lock.acquire()
