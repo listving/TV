@@ -7,12 +7,13 @@ with open("cctv.txt", 'r', encoding='utf-8') as file:
     
 # 直播源检查回看的函数
 def check_live_replay(live_url, timeout=5):  # 添加timeout参数，默认为5秒
+    print(live_url)
     line = live_url.strip()
     count = line.count(',')
     if count == 1:
         if line:
-            channel_name, api_url = line.split(',')
-            api_url = api_url + '/api/check_replay'
+            channel_name, a_url = line.split(',')
+            api_url = a_url + '/api/check_replay'
             print(channel_name,api_url)
             try:
                 # 发起请求并设置超时时间
@@ -56,7 +57,7 @@ def check_live_replays_concurrently(live_urls, num_threads, timeout=5):
         t.join()
 
 # 要使用的线程数量
-num_threads = 50
+num_threads = 10
 
 # 超时时间（秒）
 timeout = 5
