@@ -36,9 +36,9 @@ def check_live_replay(live_url, timeout=5):  # 添加timeout参数，默认为5�
             except requests.exceptions.RequestException as e:
                 print(f"请求出错，无法检查直播源 {live_url} 的回看功能。错误信息: {e}")
         else:
-            break
+            print(f"无效连接 {live_url} 。")
     else:
-        break
+        print(f"无效连接 {live_url} 。")
 
 # 并发检查回看的函数
 def check_live_replays_concurrently(live_urls, num_threads, timeout=5):
