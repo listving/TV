@@ -300,10 +300,11 @@ print(f"{now_today}其他频道更新完成")
 file_contents = []
 file_paths = ["cctv.txt", "weishi.txt", "ktpd.txt", "ysyl.txt","xiangang.txt", "qita.txt", "IPV6.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
-    with open(file_path, 'r', encoding="utf-8") as file:
-        content = file.read()
-        file_contents.append(content)
-        file.close()
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding="utf-8") as file:
+            content = file.read()
+            file_contents.append(content)
+            file.close()
 
 # print(f"{now_today}合并文件完成")
 
