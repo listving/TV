@@ -1,7 +1,27 @@
 import cv2
 import threading
+import subprocess
+import re
+import os
 
 def is_stream_playable(url, timeout=5000):
+    # 使用 ffprobe 来检查视频流
+    ffprobe_cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+                   '-show_entries', 'stream=codec_name', url]
+    
+    # 运行 ffprobe 并捕获标准错误输出
+    try:
+        ffprobe_process = subprocess.run(ffprobe_cmd, stderr=subprocess.PIPE, timeout=timeout)
+        error_output = ffprobe_process.stderr.decode('utf-8')
+    except subprocess.TimeoutExpired:
+        error_output = "ffprobe timeout expired"
+    except Exception as e:
+        error_output = str(e)
+
+    # 检查是否有错误信息
+    if "non-existing PPS" in error_output or "decode_slice_header error" in error_output or "no frame!" in error_output:
+        return False
+    
     cap = cv2.VideoCapture(url)
     ret, frame = cap.read()
     cap.release()
