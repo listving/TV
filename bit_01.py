@@ -20,7 +20,7 @@ def is_stream_playable(url, timeout=5000):
 
     # 检查是否有错误信息
     print(error_output)
-    if "non-existing PPS" in error_output or "decode_slice_header error" in error_output or "no frame!" in error_output:
+    if "Header missing" in error_output:
         return False
     
     cap = cv2.VideoCapture(url)
@@ -45,7 +45,7 @@ def main():
         "http://14.117.233.245:9000/udp/239.253.43.46:5146",
         "http://121.235.191.182:12999/hls/20/index.m3u8",
     ]  # 将urls变量更改为包含多个视频流URL的列表
-    thread_count = 3
+    thread_count = 4
 
     threads = []
     for i in range(thread_count):
