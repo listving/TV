@@ -6,7 +6,7 @@ def get_stream_bitrate(url):
     print(cmd)
     output = subprocess.check_output(cmd, shell=True, text=True)
     for line in output.splitlines():
-        if "bitrate:" in line:
+        if "mp3float" in line:
             bitrate = int(line.split()[1])
             return bitrate
 
