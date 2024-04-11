@@ -11,10 +11,6 @@ def get_stream_bitrate(url):
                 return bitrate
     except subprocess.CalledProcessError as e:
         # 如果ffmpeg命令失败，捕获异常并提取错误信息
-        print("1=======================================")
-        print(e.stderr)
-        print("2=======================================")
-
         error_output = e.output
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
@@ -22,14 +18,15 @@ def get_stream_bitrate(url):
         print(e.stderr)
         # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
         if "error while decoding MB" in e.stderr:
-            return None
+            return -1
         else:
             return 88
 
 def main():
     urls = [
         "http://14.19.199.43:5555/udp/239.253.43.47:5146",
-
+        "http://14.117.233.245:9000/udp/239.253.43.47:5146",
+        "http://125.92.140.53:8888/udp/239.253.43.46:5146",
     ]
     max_threads = 2
 
