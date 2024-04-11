@@ -5,16 +5,15 @@ def get_stream_bitrate(url):
     cmd = f"ffmpeg -i {url} -hide_banner -videoc h265 -loglevel error"
     try:
         output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
-        print("+++++++++++++++++++++++++++++++++++++++")
-        print(output)
-        print("+++++++++++++++++++++++++++++++++++++++")
-        for line in output.splitlines():
-            if "bitrate:" in line:
-                bitrate = int(line.split()[1])
-                return bitrate
+        return 99
+        # for line in output.splitlines():
+        #     if "bitrate:" in line:
+        #         bitrate = int(line.split()[1])
+        #         return bitrate
     except subprocess.CalledProcessError as e:
         # 如果ffmpeg命令失败，捕获异常并提取错误信息
         error_output = e.stderr
+        print(error_output)
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
         # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
