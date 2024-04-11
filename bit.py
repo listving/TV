@@ -24,7 +24,7 @@ def get_stream_bitrate(url):
 
 def main():
     urls = [
-        "http://125.92.140.53:8888/udp/239.253.43.46:5146",
+        "http://14.19.199.43:5555/udp/239.253.43.47:5146",
 
     ]
     max_threads = 2
