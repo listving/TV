@@ -3,23 +3,26 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
-    # 将输出重定向到/dev/null（在Windows上使用NUL）
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
-    print(cmd)
+    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error -select_streams v:0 -show_entries stream=bit_rate -v quiet -of default=noprint_wrappers=1:nokey=1"
     try:
-        output = subprocess.check_output(cmd, shell=True, text=True)
-        print(output)
-        for line in output.splitlines():
+        # 使用subprocess.run()来执行命令，并捕获标准输出和标准错误输出
+        completed_process = subprocess.run(cmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # 检查命令是否成功执行
+        if completed_process.returncode != 0:
+            # 如果命令执行失败，从stderr中获取错误信息
+            error_message = completed_process.stderr
+            print(f"Error occurred while executing the command: {error_message}")
+            return None
+        
+        # 如果命令执行成功，从stdout中获取比特率信息
+        for line in completed_process.stdout.splitlines():
             if "bitrate:" in line:
                 bitrate = int(line.split()[1])
                 return bitrate
-    except subprocess.CalledProcessError as e:
-        # 捕获并处理ffmpeg命令执行错误
-        error_output = e.output
-        e_out = e.stderr
-        error_returncode = e.returncode
-        print(f"Error occurred while executing the command: {error_output}")
-        print(f"Error occurred while executing the command: {e_out}")
+    except Exception as e:
+        # 捕获其他可能发生的异常
+        print(f"An unexpected error occurred: {e}")
         return None
 
 def main():
