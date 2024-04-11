@@ -3,9 +3,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
     cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
-    print(cmd)
+    print("---------------------------------------------------------------------------")
     output = subprocess.check_output(cmd, shell=True, text=True)
     for line in output.splitlines():
+        print(line)
         if "Header missing" in line:
             bitrate = 999    # int(line.split()[1])
             return bitrate
