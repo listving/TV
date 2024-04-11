@@ -50,6 +50,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg
           
-      - name: Run tv570
-        run: python ${{ github.workspace }}/replay_supported.py
+      - name: Run bit.py
+        run: python ${{ github.workspace }}/bit.py
         
