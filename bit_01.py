@@ -1,7 +1,5 @@
 import cv2
 import threading
-
-mport cv2
 import logging
 import io
 
