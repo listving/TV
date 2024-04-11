@@ -5,6 +5,9 @@ def get_stream_bitrate(url):
     cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
     try:
         output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
+        print("+++++++++++++++++++++++++++++++++++++++")
+        print(output)
+        print("+++++++++++++++++++++++++++++++++++++++")
         for line in output.splitlines():
             if "bitrate:" in line:
                 bitrate = int(line.split()[1])
@@ -24,9 +27,7 @@ def get_stream_bitrate(url):
 
 def main():
     urls = [
-        "http://14.19.199.43:5555/udp/239.253.43.47:5146",
-        "http://14.117.233.245:9000/udp/239.253.43.47:5146",
-        "http://125.92.140.53:8888/udp/239.253.43.46:5146",
+        "http://120.224.7.90:809/hls/204/index.m3u8",
     ]
     max_threads = 2
 
