@@ -1,42 +1,45 @@
-import subprocess
-import os
-import re
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import cv2
+import sys
+import concurrent.futures
 
-def get_stream_bitrate(url):
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
-    try:
-        output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
-        return 99
-    except subprocess.CalledProcessError as e:
-        # 如果ffmpeg命令失败，捕获异常并提取错误信息
-        error_output = e.output
-        error_returncode = e.returncode
-        # print(f"Error occurred while executing the command: {error_output}")
-        # print(f"Error occurred while executing the command: {error_returncode}")
-        print(e.stderr)
-        # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
-        if "error while decoding MB" in e.stderr:
-            return -1
-        else:
-            return 88
+def get_video_info(url, timeout):
+    cap = cv2.VideoCapture(url)
 
-def main():
-    urls = [
-        "http://14.112.82.130:2222/udp/239.253.43.47:5146",
-    ]
-    max_threads = 2
+    if not cap.isOpened():
+        print("无法打开视频文件")
+        sys.exit()
 
-    with ThreadPoolExecutor(max_workers=max_threads) as executor:
-        futures = {executor.submit(get_stream_bitrate, url): url for url in urls}
+    # 获取分辨率
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    print("分辨率： {}x{}".format(width, height))
 
-        for future in as_completed(futures):
-            url = futures[future]
+    # 获取码率
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    duration = frame_count / fps
+    bitrate = (frame_count * width * height * 3) / duration
+    print("码率： {:.2f} Mbps".format(bitrate / 1000000))
+
+    cap.release()
+    return url, (width, height), bitrate
+
+def main(urls, timeout, num_threads):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+        futures = [executor.submit(get_video_info, url, timeout) for url in urls]
+        for future in concurrent.futures.as_completed(futures):
             try:
-                bitrate = future.result()
-                print(f"直播源码率（{url}）： {bitrate} bps")
-            except Exception as e:
-                print(f"获取码率失败（{url}）： {e}")
+                result = future.result(timeout=timeout)
+                print("视频地址：", result[0])
+                print("分辨率： {}x{}".format(result[1][0], result[1][1]))
+                print("码率： {:.2f} Mbps".format(result[2] / 1000000))
+            except concurrent.futures.TimeoutError:
+                print("任务超时")
 
 if __name__ == "__main__":
-    main()
+    urls = [
+        "http://14.112.82.130:2222/udp/239.253.43.47:5146"
+    ]  # 将urls变量更改为包含多个视频流URL的列表
+    timeout = 5  # 设置超时限制，单位为秒
+    num_threads = 4  # 设置线程数量
+    main(urls, timeout, num_threads)
