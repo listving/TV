@@ -1,43 +1,19 @@
 import cv2
 import threading
-import logging
-import io
-
-def capture_logs(cap):
-    # 创建一个日志处理器，将日志输出保存到变量中
-    log_output = io.StringIO()
-    log_handler = logging.StreamHandler(log_output)
-    log_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    logging.getLogger('opencv4').addHandler(log_handler)
-    logging.getLogger('opencv4').setLevel(logging.DEBUG)  # 设置日志级别
-
-    # 执行您的操作
-    ret, frame = cap.read()
-
-    # 关闭日志处理器
-    logging.getLogger('opencv4').removeHandler(log_handler)
-
-    # 获取日志内容
-    logs = log_output.getvalue()
-    return logs, ret, frame
 
 def is_stream_playable(url, timeout=5000):
     cap = cv2.VideoCapture(url)
-    if not cap.isOpened():
-        print(f"Error opening video stream or file: {url}")
-        return False
-
-    logs, ret, frame = capture_logs(cap)
+    ret, frame = cap.read()
     cap.release()
 
     if ret:
-        print("===============================================================================================")
-        print(logs)
-        print("===============================================================================================")
+        print("------------------------------------------------------------------------")
+        print(frame)
+        print("------------------------------------------------------------------------")
         return True
     else:
         return False
-
+        
 def check_stream(url):
     if is_stream_playable(url):
         print(url,"直播源可以正常播放")
