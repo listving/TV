@@ -349,7 +349,7 @@ def main():
             url = futures[future]
             try:
                 bitrate = future.result()
-                if bitrate <> -1:
+                if bitrate > 0:
                     results.append(url)
                 # print(f"直播源码率（{url}）： {bitrate} bps")
             except Exception as e:
