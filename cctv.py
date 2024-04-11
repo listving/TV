@@ -1,5 +1,6 @@
 import subprocess
 import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 import re
 import time
@@ -308,12 +309,56 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 处理或记录结果
             print(f"Results for {url}: {resolution_and_bitrate}")
             codec_name, width, height, r_frame_rate = resolution_and_bitrate
-            if codec_name == 'h264' and width >= 720 and r_frame_rate < 50:
+            if codec_name == 'h264' and width >= 720:    # and r_frame_rate < 50:
                 results.append(url)
         except Exception as exc:
             print(f'{url} generated an exception: {exc}')
 
+# 处理过滤有可能播放异常的源
+urls = set(results)
+results = []
+err_results = []
+def get_stream_bitrate(video_url):
+    channel_name, url, speed = video_url
+    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
+    try:
+        output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
+        for line in output.splitlines():
+            if "bitrate:" in line:
+                bitrate = int(line.split()[1])
+                return bitrate
+    except subprocess.CalledProcessError as e:
+        # 如果ffmpeg命令失败，捕获异常并提取错误信息
+        error_output = e.output
+        error_returncode = e.returncode
+        # print(f"Error occurred while executing the command: {error_output}")
+        # print(f"Error occurred while executing the command: {error_returncode}")
+        # print(e.stderr)
+        # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
+        if "error while decoding MB" in e.stderr:
+            return -1
+        else:
+            return 88
+def main():
+    max_threads = 50
 
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
+        futures = {executor.submit(get_stream_bitrate, url): url for url in urls}
+
+        for future in as_completed(futures):
+            url = futures[future]
+            try:
+                bitrate = future.result()
+                if bitrate <> -1:
+                    results.append(url)
+                # print(f"直播源码率（{url}）： {bitrate} bps")
+            except Exception as e:
+                err_results.append(url)
+                print(f"获取码率失败（{url}）： {e}")
+
+if __name__ == "__main__":
+    main()
+    
 # 打开移动源文件
 with open("chinamobile.txt", 'r', encoding='utf-8') as file:
     lines = file.readlines()
@@ -365,3 +410,6 @@ with open("cctv.txt", 'w', encoding='utf-8') as file:
                 channel_counters[channel_name] = 1
 
     file.close()
+print("有可能异常的源")
+for lin in err_results:
+    print(lin)
