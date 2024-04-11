@@ -4,13 +4,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 def get_stream_bitrate(url):
     cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
     try:
-        output = subprocess.check_output(cmd, shell=True, text=True)
+        output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
         for line in output.splitlines():
             if "bitrate:" in line:
                 bitrate = int(line.split()[1])
                 return bitrate
     except subprocess.CalledProcessError as e:
         # 如果ffmpeg命令失败，捕获异常并提取错误信息
+        error_messages = e.stderr.split("\n")
+        for message in error_messages:
+            print(message)
+            
         error_output = e.output
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
