@@ -15,6 +15,7 @@ def get_stream_bitrate(url):
         error_output = e.output
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
+        print(f"Error occurred while executing the command: {error_returncode}")
         # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
         return None
 
