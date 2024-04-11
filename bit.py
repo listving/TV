@@ -3,22 +3,30 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
+    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+           '-show_entries', 'stream=codec_name,width,height,r_frame_rate,bit_rate', '-of',
+           'default=noprint_wrappers=1:nokey=1', url]
+    
     try:
-        output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
-        return 99
-    except subprocess.CalledProcessError as e:
-        # 如果ffmpeg命令失败，捕获异常并提取错误信息
-        error_output = e.stderr
-        print(error_output)
-        error_returncode = e.returncode
-        print(f"Error occurred while executing the command: {error_output}")
-        print(f"Error occurred while executing the command: {error_returncode}")
-        # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
-        if "error while decoding MB" in error_output:
-            return -1
+        result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
+        output = result.stdout
+        print(output)
+        # 使用正则表达式匹配并提取信息
+        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)?$'
+        matches = re.findall(pattern, output, re.MULTILINE)
+        
+        if matches:
+            codec_name, width, height, r_frame_rate = matches[0]
+            return int(height)
         else:
-            return 88
+            raise None
+    
+    except subprocess.CalledProcessError as e:
+        return None
+    except subprocess.TimeoutExpired:
+        return None
+    except Exception as e:
+        return None
 
 def main():
     urls = [
