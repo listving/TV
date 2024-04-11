@@ -3,7 +3,7 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error -select_streams v:0 -show_entries stream=bit_rate -v quiet -of default=noprint_wrappers=1:nokey=1"
+    cmd = f"ffmpeg -i {url} -hide_banner -loglevel panic -streams_info"
     try:
         # 使用subprocess.run()来执行命令，并捕获标准输出和标准错误输出
         completed_process = subprocess.run(cmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
