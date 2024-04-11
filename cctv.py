@@ -320,22 +320,32 @@ results = []
 err_results = []
 def get_stream_bitrate(video_url):
     channel_name, url, speed = video_url
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
+    # 使用 ffprobe 来检查视频流
+    ffprobe_cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+                   '-show_entries', 'stream=codec_name', url]
+    
+    # 运行 ffprobe 并捕获标准错误输出
     try:
-        output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
-        return 99
-    except subprocess.CalledProcessError as e:
-        # 如果ffmpeg命令失败，捕获异常并提取错误信息
-        error_output = e.output
-        error_returncode = e.returncode
-        # print(f"Error occurred while executing the command: {error_output}")
-        # print(f"Error occurred while executing the command: {error_returncode}")
-        # print(e.stderr)
-        # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
-        if "error while decoding MB" in e.stderr:
-            return -1
-        else:
-            return 88
+        ffprobe_process = subprocess.run(ffprobe_cmd, stderr=subprocess.PIPE, timeout=5000)
+        error_output = ffprobe_process.stderr.decode('utf-8')
+    except subprocess.TimeoutExpired:
+        error_output = "ffprobe timeout expired Header missing"
+    except Exception as e:
+        error_output = str(e)
+
+    # 检查是否有错误信息
+    # print(error_output)
+    if "Header missing" in error_output:
+        return -1
+    
+    cap = cv2.VideoCapture(url)
+    ret, frame = cap.read()
+    cap.release()
+
+    if ret:
+        return 88
+    else:
+        return -1
 def main():
     max_threads = 50
 
