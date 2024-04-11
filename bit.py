@@ -12,12 +12,9 @@ def get_stream_bitrate(url):
     except subprocess.CalledProcessError as e:
         # 如果ffmpeg命令失败，捕获异常并提取错误信息
         print("1=======================================")
-        print(e)
+        print(e.stderr)
         print("2=======================================")
-        error_messages = e.stderr.split("\n")
-        for message in error_messages:
-            print(message)
-            
+
         error_output = e.output
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
