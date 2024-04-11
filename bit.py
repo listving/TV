@@ -1,4 +1,5 @@
 import subprocess
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
