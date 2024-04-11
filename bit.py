@@ -20,7 +20,10 @@ def get_stream_bitrate(url):
         print(f"Error occurred while executing the command: {error_output}")
         print(f"Error occurred while executing the command: {error_returncode}")
         # 这里你可以选择如何处理错误，比如返回None或者抛出自定义的异常
-        return None
+        if "error while decoding MB" in e.stderr:
+            return None
+        else:
+            return 88
 
 def main():
     urls = [
