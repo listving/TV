@@ -3,7 +3,7 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
-    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
+    cmd = ['ffmpeg', '-v', 'error', '-select_streams', 'v:0',
            '-show_entries', 'stream=codec_name,width,height,r_frame_rate,bit_rate', '-of',
            'default=noprint_wrappers=1:nokey=1', url]
     
