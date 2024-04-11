@@ -44,6 +44,7 @@ jobs:
           pip install selenium requests futures eventlet
           pip install beautifulsoup4
           pip install chardet
+          pip install opencv-python opencv-python-headless
 
       - name: Install FFmpeg
         run: |
