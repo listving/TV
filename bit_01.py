@@ -19,6 +19,7 @@ def is_stream_playable(url, timeout=5000):
         error_output = str(e)
 
     # 检查是否有错误信息
+    print(error_output)
     if "non-existing PPS" in error_output or "decode_slice_header error" in error_output or "no frame!" in error_output:
         return False
     
