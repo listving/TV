@@ -3,9 +3,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
     cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
-    print(cmd)
     try:
         output = subprocess.check_output(cmd, shell=True, text=True)
+        print("==============================")
+        print(output)
         for line in output.splitlines():
             if "bitrate:" in line:
                 bitrate = int(line.split()[1])
