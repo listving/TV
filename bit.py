@@ -4,11 +4,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
     # 将输出重定向到/dev/null（在Windows上使用NUL）
-    null_device = '/dev/null' if os.name != 'nt' else 'NUL'
-    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error -f null - {null_device}"
+    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
     print(cmd)
     try:
         output = subprocess.check_output(cmd, shell=True, text=True)
+        print(output)
         for line in output.splitlines():
             if "bitrate:" in line:
                 bitrate = int(line.split()[1])
@@ -16,8 +16,10 @@ def get_stream_bitrate(url):
     except subprocess.CalledProcessError as e:
         # 捕获并处理ffmpeg命令执行错误
         error_output = e.output
+        e_out = e.stderr
         error_returncode = e.returncode
         print(f"Error occurred while executing the command: {error_output}")
+        print(f"Error occurred while executing the command: {e_out}")
         return None
 
 def main():
