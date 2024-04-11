@@ -2,7 +2,7 @@ import subprocess
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def get_stream_bitrate(url):
-    cmd = f"ffmpeg -i {url} -hide_banner -videoc h265 -loglevel error"
+    cmd = f"ffmpeg -i {url} -hide_banner -loglevel error"
     try:
         output = subprocess.check_output(cmd, stderr=subprocess.PIPE, shell=True, text=True)
         return 99
