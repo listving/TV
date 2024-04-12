@@ -338,6 +338,8 @@ def get_stream_bitrate(video_url):
     # print(error_output)
     if "Header missing" in error_output:
         return -1
+    else:
+        return 88
     
     cap = cv2.VideoCapture(url)
     ret, frame = cap.read()
