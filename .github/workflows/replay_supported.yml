@@ -53,4 +53,11 @@ jobs:
           
       - name: Run bit.py
         run: python ${{ github.workspace }}/cctv.py
-        
+
+      - name: 提交更改
+        run: |
+          git config --local user.name "GBOXDEO" 
+          git config --local user.email "g832@qq.com"
+          git add .
+          git commit *.txt -m "Add generated file"
+          git push -f
