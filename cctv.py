@@ -260,52 +260,47 @@ task_queue.join()
 urls = set(results)
 results = []
 err_results = []
-def get_stream_bitrate(video_url):
+
+def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认为 10 秒
     channel_name, url, speed = video_url
-    # 使用 ffprobe 来检查视频流
-    ffprobe_cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
-                   '-show_entries', 'stream=codec_name', url]
-    
-    # 运行 ffprobe 并捕获标准错误输出
+    # FFmpeg命令，使用-v error级别来只显示错误信息
+    ffmpeg_cmd = [
+        'ffmpeg',
+        '-v', 'error',
+        '-i', url,
+        '-f', 'null',
+        '-',
+    ]
+
     try:
-        ffprobe_process = subprocess.run(ffprobe_cmd, stderr=subprocess.PIPE, timeout=5000)
-        error_output = ffprobe_process.stderr.decode('utf-8')
+        completed_process = subprocess.run(ffmpeg_cmd, stderr=subprocess.PIPE, check=False, timeout=timeout)
     except subprocess.TimeoutExpired:
-        error_output = "ffprobe timeout expired Header missing"
-    except Exception as e:
-        error_output = str(e)
+        return False  # 如果超时，视为错误并返回 False
 
-    # 检查是否有错误信息
-    # print(error_output)
-    if "Header missing" in error_output:
-        return -1
+    # 检查stderr中是否包含特定的错误信息
+    error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
+    if error_pattern.search(completed_process.stderr.decode('utf-8')):
+        return False  # 如果找到错误，返回 False
     else:
-        return 88
-    
-    cap = cv2.VideoCapture(url)
-    ret, frame = cap.read()
-    cap.release()
-
-    if ret:
-        return 88
-    else:
-        return -1
+        return True  # 如果没有找到错误，返回 True
+        
 def main():
     max_threads = 50
+    timeout_seconds = 10  # 自定义超时时间，这里设置为 15 秒
 
-    with ThreadPoolExecutor(max_workers=max_threads) as executor:
-        futures = {executor.submit(get_stream_bitrate, url): url for url in urls}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
+        futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
 
-        for future in as_completed(futures):
+        for future in concurrent.futures.as_completed(futures):
             url = futures[future]
             try:
-                bitrate = future.result()
-                if bitrate > 0:
+                ret = future.result()
+                if ret:
                     results.append(url)
-                # print(f"直播源码率（{url}）： {bitrate} bps")
+                else:
+                    err_results.append(url)
             except Exception as e:
                 err_results.append(url)
-                print(f"获取码率失败（{url}）： {e}")
 
 if __name__ == "__main__":
     main()
