@@ -295,7 +295,7 @@ def check_live_stream_for_errors(video_url, timeout=10):
             # 进程超时
             process.kill()
             stderr_thread.join()  # 等待stderr线程完成
-            return False
+            return True
         else:
             # 读取并检查stderr中的错误信息
             stderr_output, _ = process.communicate()
@@ -308,11 +308,11 @@ def check_live_stream_for_errors(video_url, timeout=10):
         # 超时处理
         process.kill()
         stderr_thread.join()  # 等待stderr线程完成
-        return False
+        return True
         
 def main():
     max_threads = 50
-    timeout_seconds = 10  # 自定义超时时间，这里设置为 15 秒
+    timeout_seconds = 15  # 自定义超时时间，这里设置为 15 秒
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
@@ -323,6 +323,7 @@ def main():
                 ret = future.result()
                 if ret:
                     results.append(url)
+                    print(f"正常的源 {url}")
                 else:
                     err_results.append(url)
             except Exception as e:
