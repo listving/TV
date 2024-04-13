@@ -261,7 +261,20 @@ urls = set(results)
 results = []
 err_results = []
 
-def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认为 10 秒
+def read_stderr(process, timeout):
+    start_time = time.time()
+    while process.poll() is None:
+        if time.time() - start_time > timeout:
+            break
+        try:
+            line = process.stderr.readline(timeout=timeout)
+            if line:
+                print(line.strip().decode('utf-8'), end='')
+        except BlockingIOError:
+            # Timeout occurred while waiting for stderr output
+            break
+            
+def check_live_stream_for_errors(video_url, timeout=10):
     channel_name, url, speed = video_url
     # FFmpeg命令，使用-v error级别来只显示错误信息
     ffmpeg_cmd = [
@@ -272,22 +285,35 @@ def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认
         '-',
     ]
 
-    try:
-        completed_process = subprocess.run(ffmpeg_cmd, stderr=subprocess.PIPE, check=False, timeout=timeout)
-    except subprocess.TimeoutExpired:
-        return False  # 如果超时，视为错误并返回 False
+    process = subprocess.Popen(ffmpeg_cmd, stderr=subprocess.PIPE)
+    stderr_thread = threading.Thread(target=read_stderr, args=(process, timeout))  # 使用timeout参数
+    stderr_thread.start()
 
-    # 检查stderr中是否包含特定的错误信息
-    error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
-    if error_pattern.search(completed_process.stderr.decode('utf-8')):
-        return False  # 如果找到错误，返回 False
-    else:
-        return True  # 如果没有找到错误，返回 True
+    try:
+        process.wait(timeout=timeout)
+        if process.returncode is None:
+            # 进程超时
+            process.kill()
+            stderr_thread.join()  # 等待stderr线程完成
+            return False
+        else:
+            # 读取并检查stderr中的错误信息
+            stderr_output, _ = process.communicate()
+            error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
+            if error_pattern.search(stderr_output.decode('utf-8')):
+                return False
+            else:
+                return True
+    except subprocess.TimeoutExpired:
+        # 超时处理
+        process.kill()
+        stderr_thread.join()  # 等待stderr线程完成
+        return False
         
 def main():
     max_threads = 50
     timeout_seconds = 10  # 自定义超时时间，这里设置为 15 秒
-
+    
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
 
@@ -301,6 +327,7 @@ def main():
                     err_results.append(url)
             except Exception as e:
                 err_results.append(url)
+                print(f"Error occurred for URL {url}: {e}")
 
 if __name__ == "__main__":
     main()
