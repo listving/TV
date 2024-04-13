@@ -1,3 +1,4 @@
+# 可以使用的代杩
 import cv2
 import subprocess
 import concurrent.futures
@@ -261,23 +262,7 @@ urls = set(results)
 results = []
 err_results = []
 
-def read_stderr(process):
-    start_time = time.time()
-    timeout = 10  # 设置一个超时时间
-    while process.poll() is None:
-        if time.time() - start_time > timeout:
-            break
-        readable, _, _ = select.select([process.stderr], [], [], timeout)
-        if process.stderr in readable:
-            try:
-                line = process.stderr.readline().decode('utf-8')
-                if line:
-                    print(line.strip(), end='')
-            except BlockingIOError:
-                # 如果在等待stderr输出时发生阻塞I/O错误（通常是因为流已经关闭），则退出循环
-                break
-            
-def check_live_stream_for_errors(video_url, timeout=10):
+def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认为 10 秒
     channel_name, url, speed = video_url
     # FFmpeg命令，使用-v error级别来只显示错误信息
     ffmpeg_cmd = [
@@ -288,35 +273,22 @@ def check_live_stream_for_errors(video_url, timeout=10):
         '-',
     ]
 
-    process = subprocess.Popen(ffmpeg_cmd, stderr=subprocess.PIPE)
-    stderr_thread = threading.Thread(target=read_stderr, args=(process))  # 使用timeout参数
-    stderr_thread.start()
-
     try:
-        process.wait(timeout=timeout)
-        if process.returncode is None:
-            # 进程超时
-            process.kill()
-            stderr_thread.join()  # 等待stderr线程完成
-            return True
-        else:
-            # 读取并检查stderr中的错误信息
-            stderr_output, _ = process.communicate()
-            error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
-            if error_pattern.search(stderr_output.decode('utf-8')):
-                return False
-            else:
-                return True
+        completed_process = subprocess.run(ffmpeg_cmd, stderr=subprocess.PIPE, check=False, timeout=timeout)
     except subprocess.TimeoutExpired:
-        # 超时处理
-        process.kill()
-        stderr_thread.join()  # 等待stderr线程完成
-        return True
+        return True  # 如果超时，视为错误并返回 False（在这里超时全部视为正常，因前面已经有过判断了）
+
+    # 检查stderr中是否包含特定的错误信息
+    error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
+    if error_pattern.search(completed_process.stderr.decode('utf-8')):
+        return False  # 如果找到错误，返回 False
+    else:
+        return True  # 如果没有找到错误，返回 True
         
 def main():
     max_threads = 50
-    timeout_seconds = 15  # 自定义超时时间，这里设置为 15 秒
-    
+    timeout_seconds = 10  # 自定义超时时间，这里设置为 15 秒
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
 
@@ -326,9 +298,10 @@ def main():
                 ret = future.result()
                 if ret:
                     results.append(url)
-                    print(f"正常的源 {url}")
+                    print(f"应该正常的源 {url}")
                 else:
                     err_results.append(url)
+                    print(f"Header missing {url}")
             except Exception as e:
                 err_results.append(url)
                 print(f"Error occurred for URL {url}: {e}")
