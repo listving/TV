@@ -261,18 +261,21 @@ urls = set(results)
 results = []
 err_results = []
 
-def read_stderr(process, timeout):
+def read_stderr(process):
     start_time = time.time()
+    timeout = 10  # 设置一个超时时间
     while process.poll() is None:
         if time.time() - start_time > timeout:
             break
-        try:
-            line = process.stderr.readline(timeout=timeout)
-            if line:
-                print(line.strip().decode('utf-8'), end='')
-        except BlockingIOError:
-            # Timeout occurred while waiting for stderr output
-            break
+        readable, _, _ = select.select([process.stderr], [], [], timeout)
+        if process.stderr in readable:
+            try:
+                line = process.stderr.readline().decode('utf-8')
+                if line:
+                    print(line.strip(), end='')
+            except BlockingIOError:
+                # 如果在等待stderr输出时发生阻塞I/O错误（通常是因为流已经关闭），则退出循环
+                break
             
 def check_live_stream_for_errors(video_url, timeout=10):
     channel_name, url, speed = video_url
@@ -286,7 +289,7 @@ def check_live_stream_for_errors(video_url, timeout=10):
     ]
 
     process = subprocess.Popen(ffmpeg_cmd, stderr=subprocess.PIPE)
-    stderr_thread = threading.Thread(target=read_stderr, args=(process, timeout))  # 使用timeout参数
+    stderr_thread = threading.Thread(target=read_stderr, args=(process))  # 使用timeout参数
     stderr_thread.start()
 
     try:
