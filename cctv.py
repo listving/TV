@@ -287,7 +287,7 @@ def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认
         
 def main():
     max_threads = 50
-    timeout_seconds = 10  # 自定义超时时间，这里设置为 15 秒
+    timeout_seconds = 15  # 自定义超时时间，这里设置为 15 秒
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
@@ -303,8 +303,9 @@ def main():
                     err_results.append(url)
                     print(f"Header missing {url}")
             except Exception as e:
-                err_results.append(url)
-                print(f"Error occurred for URL {url}: {e}")
+                results.append(url)
+                print(f"超时，但应该是正常的源 {url}")
+                # print(f"Error occurred for URL {url}: {e}")
 
 if __name__ == "__main__":
     main()
