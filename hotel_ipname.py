@@ -11,6 +11,8 @@ import re
 from bs4 import BeautifulSoup
 from queue import Queue
 import threading
+import urllib.parse
+import math
 
 not_ip = [
     "14.19.199.43:8089",
@@ -18,11 +20,6 @@ not_ip = [
 lock = threading.Lock()
 
 diqu = [
-    "cctv",
-    "卫视",
-    "凤凰",
-    "新闻",
-    "综合",
     "广西",
     "内蒙",
     "西藏",
@@ -54,40 +51,19 @@ diqu = [
     "河北",
     "上海"
     ]
-random_choice = random.choice(diqu)
-huabei = "北京市、天津市、河北省、山西省"
-dongbei = "黑龙江省、吉林省、辽宁省、内蒙古自治区"
-huadong = "上海市、江苏省、浙江省、安徽省、江西省、山东省、福建省、台湾省"
-huazhong = "河南省、湖北省、湖南省"
-huanan = "广东省、广西壮族自治区、海南省、香港特别行政区、澳门特别行政区"
-xinan = "重庆市、四川省、贵州省、云南省、西藏自治区"
-xibei = "陕西省、甘肃省、青海省、宁夏回族自治区、新疆维吾尔自治区、内蒙古自治区西部（阿拉善盟、巴彦淖尔市、乌海市、鄂尔多斯市）"
+random_choice = urllib.parse.quote(random.choice(diqu), safe='')
 
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
-            if dq in huabei:
-                return "华北"
-            elif dq in dongbei:
-                return "东北"
-            elif dq in huadong:
-                return "华东"
-            elif dq in huazhong:
-                return "华中"
-            elif dq in huanan:
-                return "华南"  
-            elif dq in xinan:
-                return "西南"
-            elif dq in xibei:
-                return "西北"
-            else:
-                return dq
+            return dq
     return "未分类"
 # 查找所有符合指定格式的网址
 infoList = []
 urls_y = []
 resultslist = []
-page = 200
+page = 10
+list_page = 0
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
     ]
@@ -106,12 +82,22 @@ def is_odd_or_even(number):
         return True
     else:
         return False
-
+tonkiang_err = 0
+foodieguide_err = 0
 for i in range(1, page + 1):
     try:
         # 创建一个Chrome WebDriver实例
         results = []
-        url = f"http://tonkiang.us/hoteliptv.php?page={i}&s={random_choice}"
+        if is_odd_or_even(random.randint(1, 999)):
+            if tonkiang_err == 0:
+                url = f"http://tonkiang.us/hoteliptv.php?page={i}&s={random_choice}"
+            else:
+                url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
+        else:
+            if foodieguide_err == 0:
+                url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
+            else:
+                url = f"http://tonkiang.us/hoteliptv.php?page={i}&s={random_choice}"
         print(url)
         chrome_options = Options()
         chrome_options.add_argument('--headless')
@@ -132,6 +118,12 @@ for i in range(1, page + 1):
         )
         time.sleep(random.randint(3, 10))
         soup = BeautifulSoup(driver.page_source, "html.parser")
+        if list_page == 0:
+            result_paragraph = soup.find('p', string=re.compile('About \d+ results'))
+            if result_paragraph:
+                number = re.search(r'\d+', result_paragraph.text).group()
+                list_page = math.ceil(number / 20)
+                print(f"{random_choice} 当前总页数：{list_page}")
     
         # 关闭WebDriver
         driver.quit()
@@ -147,7 +139,9 @@ for i in range(1, page + 1):
             #break
             print("Err-------------------------------------------------------------------------------------------------------")
         for result in results:
-            # print(result)
+            print("-------------------------------------------------------------------------------------------------------")
+            print(result)
+            print("-------------------------------------------------------------------------------------------------------")
             html_txt = f"{result}"
             if "暂时失效" not in html_txt:
                 m3u8_div = result.find("a")
@@ -184,7 +178,17 @@ for i in range(1, page + 1):
                                 print(f"{ipname},{ip},{dq_name}")
                             name_html_txt = ""
     except:
+        if 'tonkiang' in url:
+            tonkiang_err = 1
+            foodieguide_err = 0
+        elif 'foodieguide' in url:
+            foodieguide_err = 1
+            tonkiang_err = 0 
         print(f"=========================>>> Thread {url} error")
+    finally:
+        if list_page > 0:
+            if i >= list_page:
+                break
         
 resultslist = set(resultslist)    # 去重得到唯一的URL列表
 
@@ -216,10 +220,9 @@ def worker(thread_url,counter_id):
         driver.set_script_timeout(50)  # 5秒后超时
         # 使用WebDriver访问网页
         if is_odd_or_even(random.randint(1, 200)):
-            page_url= f"http://tonkiang.us/9dlist2.php?s={in_url}"
+            page_url= f"http://tonkiang.us/hotellist.html?s={in_url}"
         else:
-            page_url= f"http://foodieguide.com/iptvsearch/alllist.php?s={in_url}"
-        
+            page_url= f"http://foodieguide.com/iptvsearch/hotellist.html?s={in_url}"
         print(page_url)
         driver.get(page_url)  # 将网址替换为你要访问的网页地址
         WebDriverWait(driver, 45).until(
@@ -307,7 +310,7 @@ def worker(thread_url,counter_id):
             if "http" in urlsp:
                 # 获取锁
                 lock.acquire()
-                infoList.append(f"{dq_name}_{name}_{in_name},{urlsp}")
+                infoList.append(f"{name}_{in_name},{urlsp}")
                 # 释放锁
                 lock.release()
         print(f"=========================>>> Thread {in_url} save ok")
