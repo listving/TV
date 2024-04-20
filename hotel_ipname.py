@@ -13,6 +13,8 @@ from queue import Queue
 import threading
 import urllib.parse
 import math
+import requests
+from requests.exceptions import Timeout
 
 not_ip = [
     "14.19.199.43:8089",
@@ -62,7 +64,7 @@ def contains_any_value(text, diqu):
 infoList = []
 urls_y = []
 resultslist = []
-page = 10
+page = 2
 list_page = 0
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
@@ -90,22 +92,41 @@ for i in range(1, page + 1):
         results = []
         if is_odd_or_even(random.randint(1, 999)):
             if tonkiang_err == 0:
-                url = f"http://tonkiang.us/hoteliptv.php?page={i}&s={random_choice}"
+                url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
             else:
                 url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
         else:
             if foodieguide_err == 0:
                 url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
             else:
-                url = f"http://tonkiang.us/hoteliptv.php?page={i}&s={random_choice}"
+                url = f"http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}&s={random_choice}"
         print(url)
         chrome_options = Options()
+
+        # 添加HTTP头信息
+        http_headers = {
+            "User-Agent": "Chrome/4.0",
+            "Accept-Ranges": "bytes",
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Headers": "x-requested-with",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+            "Access-Control-Max-Age": "3600",
+            "Content-Language": "zh-CN",
+            "Content-Type": "text/html; charset=UTF-8"
+        }
+        
+        # 将HTTP头信息添加到Chrome选项中
+        for key, value in http_headers.items():
+            chrome_options.add_argument(f"{key}={value}")
+            
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.add_experimental_option("useAutomationExtension", False)
         chrome_options.add_argument("blink-settings=imagesEnabled=false")
+        # 创建WebDriver实例并传递配置
         driver = webdriver.Chrome(options=chrome_options)
+        
         driver.set_page_load_timeout(90)  # 10秒后超时
         # 设置脚本执行超时
         driver.set_script_timeout(80)  # 5秒后超时
@@ -113,11 +134,13 @@ for i in range(1, page + 1):
         driver.get(url)  # 将网址替换为你要访问的网页地址
         WebDriverWait(driver, 75).until(
             EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "div.tables")
+                (By.CSS_SELECTOR, "div.box")
                 )
         )
-        time.sleep(random.randint(3, 10))
+        # time.sleep(random.randint(3, 10))
+        time.sleep(20)
         soup = BeautifulSoup(driver.page_source, "html.parser")
+
         if list_page == 0:
             result_paragraph = soup.find('p', string=re.compile('About \d+ results'))
             if result_paragraph:
