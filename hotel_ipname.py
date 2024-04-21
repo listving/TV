@@ -170,7 +170,7 @@ for i in range(1, page + 1):
             print('总页数计算')
             result_paragraph = soup.find('div', class_='channel')
             ext_inside_div = result_paragraph.get_text(strip=True)
-            print('当前总页数：',ext_inside_div)
+            print('当前记录数：',ext_inside_div)
             number = re.search(r'\d+', ext_inside_div).group()
             list_page = math.ceil(number / 20)
             print(f"{random_choice} 当前总页数：{list_page}")
