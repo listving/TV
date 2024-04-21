@@ -87,7 +87,7 @@ def contains_any_value(text, diqu):
 infoList = []
 urls_y = []
 resultslist = []
-page = 30
+page = 2
 list_page = 0
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
@@ -171,11 +171,10 @@ for i in range(1, page + 1):
             result_paragraph = soup.find('div', class_='channel')
             ext_inside_div = result_paragraph.get_text(strip=True)
             print('当前总页数：',ext_inside_div)
-            if ext_inside_div:
-                number = re.search(r'\d+', ext_inside_div.text).group()
-                list_page = math.ceil(number / 20)
-                print(f"{random_choice} 当前总页数：{list_page}")
-    
+            number = re.search(r'\d+', ext_inside_div).group()
+            list_page = math.ceil(number / 20)
+            print(f"{random_choice} 当前总页数：{list_page}")
+
         # 关闭WebDriver
         driver.quit()
         tables_div = soup.find("div", class_="tables")
