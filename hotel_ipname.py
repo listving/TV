@@ -66,7 +66,22 @@ xibei = "陕西省、甘肃省、青海省、宁夏回族自治区、新疆维�
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
-            return dq
+            if dq in huabei:
+                return "华北"
+            elif dq in dongbei:
+                return "东北"
+            elif dq in huadong:
+                return "华东"
+            elif dq in huazhong:
+                return "华中"
+            elif dq in huanan:
+                return "华南"  
+            elif dq in xinan:
+                return "西南"
+            elif dq in xibei:
+                return "西北"
+            else:
+                return dq
     return "未分类"
 # 查找所有符合指定格式的网址
 infoList = []
@@ -345,7 +360,7 @@ def worker(thread_url,counter_id):
             if "http" in urlsp:
                 # 获取锁
                 lock.acquire()
-                infoList.append(f"{name}_{in_name},{urlsp}")
+                infoList.append(f"{dq_name}_{name}_{in_name},{urlsp}")
                 # 释放锁
                 lock.release()
         print(f"=========================>>> Thread {in_url} save ok")
