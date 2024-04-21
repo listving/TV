@@ -66,22 +66,7 @@ xibei = "陕西省、甘肃省、青海省、宁夏回族自治区、新疆维�
 def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
-            if dq in huabei:
-                return "华北"
-            elif dq in dongbei:
-                return "东北"
-            elif dq in huadong:
-                return "华东"
-            elif dq in huazhong:
-                return "华中"
-            elif dq in huanan:
-                return "华南"  
-            elif dq in xinan:
-                return "西南"
-            elif dq in xibei:
-                return "西北"
-            else:
-                return dq
+            return dq
     return "未分类"
 # 查找所有符合指定格式的网址
 infoList = []
@@ -224,7 +209,7 @@ for i in range(1, page + 1):
                             url_name = second_italic_tag.text
                             name_html_txt = f"{url_name}"
                             name_html_txt = name_html_txt.replace(" ", "").replace("\n", "")
-                            # print(html_txt)
+                            print(name_html_txt)
                             # print("1===========================================================================================================")
                             if "移动" in html_txt:
                                 ipname = '移动'
@@ -238,7 +223,7 @@ for i in range(1, page + 1):
                                 ipname = '电信'
                             else:
                                 ipname ='其他'
-                            dq_name = contains_any_value(html_txt, diqu)
+                            dq_name = contains_any_value(name_html_txt, diqu)
                             if ip not in not_ip:
                                 resultslist.append(f"{ipname},{ip},{dq_name}")
                                 print(f"{ipname},{ip},{dq_name}")
