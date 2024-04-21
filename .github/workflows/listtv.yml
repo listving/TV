@@ -1,8 +1,7 @@
-name: cctv setup
+name: Seek cctv setup
 on:
   # schedule:
-  #    - cron: '0 3,7,11,15,19,23 * * *'  #14-在晚上22点起运行，时区应该是+8
-    #- cron: '0 2,9,16,23 * * *'
+  #   - cron: '0 2,6,10,14,18,22 * * *'  #时区+8
   # 手动运行
   workflow_dispatch:
 
@@ -44,27 +43,37 @@ jobs:
         run: |
           pip install selenium requests futures eventlet
           pip install beautifulsoup4
+          pip install chardet
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          
+      - name: Run china combil
+        run: python ${{ github.workspace }}/nanxun_tv.py
         
-      # - name: Run hotel_ipname_dq
-      #   run: python ${{ github.workspace }}/bywork/hotel_ipname_dq.py
-        
+      - name: Run hotel_ipname
+        run: python ${{ github.workspace }}/hotel_ipname.py
+
       - name: Run cctv
-        run: python ${{ github.workspace }}/bywork/cctv.py
+        run: python ${{ github.workspace }}/cctv.py
           
       - name: Run weishi
-        run: python ${{ github.workspace }}/bywork/weishi.py
+        run: python ${{ github.workspace }}/weishi.py
           
       - name: Run ktpd
-        run: python ${{ github.workspace }}/bywork/ktpd.py
+        run: python ${{ github.workspace }}/ktpd.py
           
       - name: Run ysyl
-        run: python ${{ github.workspace }}/bywork/ysyl.py
+        run: python ${{ github.workspace }}/ysyl.py
              
       - name: Run qita
-        run: python ${{ github.workspace }}/bywork/qita.py
+        run: python ${{ github.workspace }}/qita.py
         
       - name: Run tv570
-        run: python ${{ github.workspace }}/bywork/tv570.py
+        run: python ${{ github.workspace }}/tv570.py
+        
       - name: 提交更改
         run: |
           git config --local user.name "listving" 
