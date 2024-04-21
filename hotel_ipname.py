@@ -155,7 +155,7 @@ for i in range(1, page + 1):
         driver.set_script_timeout(80)  # 5秒后超时
         # 使用WebDriver访问网页
         driver.get(url)  # 将网址替换为你要访问的网页地址
-        time.sleep(random.randint(5, 30))
+        time.sleep(15)
         driver.get(url)  # 将网址替换为你要访问的网页地址
         WebDriverWait(driver, 75).until(
             EC.presence_of_element_located(
@@ -167,9 +167,9 @@ for i in range(1, page + 1):
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         if list_page == 0:
-            result_paragraph = soup.find('div', string=re.compile('About \\d+ results'))
-            print('当前总页数：')
-            print(result_paragraph)
+            paragraph = BeautifulSoup(driver.page_source, "html.parser")
+            result_paragraph = paragraph.find('div', string=re.compile('About \\d+ results'))
+            print('当前总页数：',result_paragraph)
             if result_paragraph:
                 number = re.search(r'\d+', result_paragraph.text).group()
                 list_page = math.ceil(number / 20)
