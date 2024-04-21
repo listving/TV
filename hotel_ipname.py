@@ -167,7 +167,7 @@ for i in range(1, page + 1):
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         if list_page == 0:
-            result_paragraph = soup.find('div', class_='channel')
+            result_paragraph = soup.find('div', string=re.compile('About \\d+ results'))
             print('当前总页数：')
             print(result_paragraph)
             if result_paragraph:
