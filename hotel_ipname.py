@@ -173,7 +173,7 @@ for i in range(1, page + 1):
             number = re.search(r'\d+', ext_inside_div).group()
             print('当前记录数：',number)
             list_page = number // 20 + 1
-            print(f"{random_choice} 当前总页数：{list_page}")
+            print('当前总页数：',list_page)
 
         # 关闭WebDriver
         driver.quit()
