@@ -181,7 +181,7 @@ for i in range(1, page + 1):
                     print('当前记录数：', number)
                     
                     # 计算总页数并打印
-                    list_page = int(number / 20)
+                    list_page = number // 20
                     print('当前总页数：', list_page)
                 else:
                     # 如果没有找到数字，则打印提示信息
@@ -242,14 +242,14 @@ for i in range(1, page + 1):
                                 resultslist.append(f"{ipname},{ip},{dq_name}")
                                 print(f"{ipname},{ip},{dq_name}")
                             name_html_txt = ""
-    except:
+    except Exception as e:
         if 'tonkiang' in url:
             tonkiang_err = 1
             foodieguide_err = 0
         elif 'foodieguide' in url:
             foodieguide_err = 1
             tonkiang_err = 0 
-        print(f"=========================>>> Thread {url} error")
+        print(f"=========================>>> Thread {url} error {e}")
     finally:
         if list_page > 0:
             if i >= list_page:
