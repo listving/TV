@@ -159,7 +159,7 @@ for i in range(1, page + 1):
         driver.get(url)  # 将网址替换为你要访问的网页地址
         WebDriverWait(driver, 75).until(
             EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "div.box")
+                (By.CSS_SELECTOR, "div.tables")
                 )
         )
         # time.sleep(random.randint(3, 10))
@@ -167,6 +167,7 @@ for i in range(1, page + 1):
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         if list_page == 0:
+            print('总页数计算')
             result_paragraph = soup.find('div', string=re.compile('About \\d+ results'))
             print('当前总页数：',result_paragraph)
             if result_paragraph:
