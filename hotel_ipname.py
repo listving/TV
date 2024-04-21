@@ -22,6 +22,7 @@ not_ip = [
 lock = threading.Lock()
 
 diqu = [
+    "凤凰",
     "广西",
     "内蒙",
     "西藏",
@@ -71,7 +72,7 @@ def contains_any_value(text, diqu):
 infoList = []
 urls_y = []
 resultslist = []
-page = 2
+page = 30
 list_page = 0
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
