@@ -177,11 +177,12 @@ for i in range(1, page + 1):
                 match = re.search(r'\d+', text_content)
                 if match:
                     # 如果找到了数字，则提取并打印
-                    number = match.group()
-                    print('当前记录数：', number)
+                    number_str = match.group()
+                    print('当前记录数：', number_str)
                     
                     # 计算总页数并打印
-                    list_page = number // 20
+                    number = int(number_str)
+                    list_page = number // 20 + 1
                     print('当前总页数：', list_page)
                 else:
                     # 如果没有找到数字，则打印提示信息
