@@ -54,6 +54,13 @@ diqu = [
     "上海"
     ]
 random_choice = urllib.parse.quote(random.choice(diqu), safe='')
+huabei = "北京市、天津市、河北省、山西省"
+dongbei = "黑龙江省、吉林省、辽宁省、内蒙古自治区"
+huadong = "上海市、江苏省、浙江省、安徽省、江西省、山东省、福建省、台湾省"
+huazhong = "河南省、湖北省、湖南省"
+huanan = "广东省、广西壮族自治区、海南省、香港特别行政区、澳门特别行政区"
+xinan = "重庆市、四川省、贵州省、云南省、西藏自治区"
+xibei = "陕西省、甘肃省、青海省、宁夏回族自治区、新疆维吾尔自治区、内蒙古自治区西部（阿拉善盟、巴彦淖尔市、乌海市、鄂尔多斯市）"
 
 def contains_any_value(text, diqu):
     for dq in diqu:
@@ -105,7 +112,7 @@ for i in range(1, page + 1):
 
         # 添加HTTP头信息
         http_headers = {
-            "User-Agent": "Chrome/4.0",
+            "User-Agent": "Chrome/4.12",
             "Accept-Ranges": "bytes",
             "Access-Control-Allow-Credentials": "true",
             "Access-Control-Allow-Headers": "x-requested-with",
@@ -132,7 +139,7 @@ for i in range(1, page + 1):
         driver.set_script_timeout(80)  # 5秒后超时
         # 使用WebDriver访问网页
         driver.get(url)  # 将网址替换为你要访问的网页地址
-        time.sleep(20)
+        time.sleep(random.randint(5, 30))
         driver.get(url)  # 将网址替换为你要访问的网页地址
         WebDriverWait(driver, 75).until(
             EC.presence_of_element_located(
@@ -145,6 +152,7 @@ for i in range(1, page + 1):
 
         if list_page == 0:
             result_paragraph = soup.find('p', string=re.compile('About \d+ results'))
+            print('当前总页数：',result_paragraph)
             if result_paragraph:
                 number = re.search(r'\d+', result_paragraph.text).group()
                 list_page = math.ceil(number / 20)
@@ -179,7 +187,7 @@ for i in range(1, page + 1):
                         italic_tags = soup.find_all('i')
                         # 尝试获取第二个<i>标签
                         if len(italic_tags) >= 1:
-                            second_italic_tag = italic_tags[0]  # 索引从0开始，所以第二个标签的索引是1
+                            second_italic_tag = italic_tags[1]  # 索引从0开始，所以第二个标签的索引是1
                             url_name = second_italic_tag.text
                             name_html_txt = f"{url_name}"
                             name_html_txt = name_html_txt.replace(" ", "").replace("\n", "")
