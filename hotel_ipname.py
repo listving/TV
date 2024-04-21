@@ -181,7 +181,7 @@ for i in range(1, page + 1):
                     print('当前记录数：', number)
                     
                     # 计算总页数并打印
-                    list_page = number // 20 + 1
+                    list_page = int(number / 20)
                     print('当前总页数：', list_page)
                 else:
                     # 如果没有找到数字，则打印提示信息
