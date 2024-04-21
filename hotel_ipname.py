@@ -167,13 +167,28 @@ for i in range(1, page + 1):
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         if list_page == 0:
-            print('总页数计算')
-            result_paragraph = soup.find('div', class_='channel')
-            ext_inside_div = result_paragraph.get_text(strip=True)
-            number = re.search(r'\d+', ext_inside_div).group()
-            print('当前记录数：',number)
-            list_page = number // 20 + 1
-            print('当前总页数：',list_page)
+            # 查找具有指定class的div元素
+            channel_div = soup.find('div', class_='channel')
+            if channel_div:
+                # 获取div内的文本内容并去除首尾空白
+                text_content = channel_div.get_text(strip=True)
+                
+                # 尝试从文本内容中提取数字
+                match = re.search(r'\d+', text_content)
+                if match:
+                    # 如果找到了数字，则提取并打印
+                    number = match.group()
+                    print('当前记录数：', number)
+                    
+                    # 计算总页数并打印
+                    list_page = number // 20 + 1
+                    print('当前总页数：', list_page)
+                else:
+                    # 如果没有找到数字，则打印提示信息
+                    print('未能在文本内容中找到数字。')
+            else:
+                # 如果没有找到具有指定class的div元素，则打印提示信息
+                print('未能找到具有指定class的div元素。')
 
         # 关闭WebDriver
         driver.quit()
