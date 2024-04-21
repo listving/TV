@@ -128,7 +128,7 @@ for i in range(1, page + 1):
 
         # 添加HTTP头信息
         http_headers = {
-            "User-Agent": "Chrome/4.12",
+            "User-Agent": "Chrome/4.0",
             "Accept-Ranges": "bytes",
             "Access-Control-Allow-Credentials": "true",
             "Access-Control-Allow-Headers": "x-requested-with",
@@ -167,8 +167,7 @@ for i in range(1, page + 1):
         soup = BeautifulSoup(driver.page_source, "html.parser")
 
         if list_page == 0:
-            paragraph = BeautifulSoup(driver.page_source, "html.parser")
-            result_paragraph = paragraph.find('div', string=re.compile('About \\d+ results'))
+            result_paragraph = soup.find('div', string=re.compile('About \\d+ results'))
             print('当前总页数：',result_paragraph)
             if result_paragraph:
                 number = re.search(r'\d+', result_paragraph.text).group()
