@@ -223,14 +223,16 @@ for i in range(1, page + 1):
                     # print(urls_all)
                     if len(urls_all) > 0:
                         ip = urls_all[0]
-                        italic_tags = soup.find_all('i')
+                        italic_tags = result.find_all('i')
                         # 尝试获取第二个<i>标签
                         if len(italic_tags) >= 1:
                             # second_italic_tag = italic_tags[1]  # 索引从0开始，所以第二个标签的索引是1
                             for tag in italic_tags:
                                 if '上线' in tag.get_text():
                                     url_name = tag.get_text()
-                            
+                                    break
+                                else:
+                                    url_name = '未知'
                             name_html_txt = f"{url_name}"
                             name_html_txt = name_html_txt.replace(" ", "").replace("\n", "")
                             print(name_html_txt)
