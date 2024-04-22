@@ -73,23 +73,24 @@ def contains_any_value(text, diqu):
     for dq in diqu:
         if dq in text:
             if dq in huabei:
-                return "华北"
+                return dq+"_华北"
             elif dq in dongbei:
-                return "东北"
+                return dq+"_东北"
             elif dq in huadong:
-                return "华东"
+                return dq+"_华东"
             elif dq in huazhong:
-                return "华中"
+                return dq+"_华中"
             elif dq in huanan:
-                return "华南"  
+                return dq+"_华南"  
             elif dq in xinan:
-                return "西南"
+                return dq+"_西南"
             elif dq in xibei:
-                return "西北"
+                return dq+"_西北"
             else:
-                return dq
+                return dq+"_未知"
     return "未分类"
 # 查找所有符合指定格式的网址
+dqlist = []
 infoList = []
 urls_y = []
 resultslist = []
