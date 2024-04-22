@@ -165,65 +165,59 @@ for channel in channels:
 
 # 等待所有任务完成
 task_queue.join()
-# 测试分辨率
-def check_video_source_with_ffmpeg(url):
-    cmd = ['ffprobe', '-v', 'error', '-select_streams', 'v:0',
-           '-show_entries', 'stream=codec_name,width,height,r_frame_rate', '-of',
-           'default=noprint_wrappers=1:nokey=1', url]
-    
-    try:
-        result = subprocess.run(cmd, capture_output=True, check=True, timeout=20, text=True)
-        output = result.stdout
-        # print(output)
-        # 使用正则表达式匹配并提取信息
-        pattern = r'^(h264)\s+(\d+)\s+(\d+)\s+(\d+/\d+)?$'
-        matches = re.findall(pattern, output, re.MULTILINE)
-        
-        if matches:
-            codec_name, width, height, r_frame_rate = matches[0]
-            return codec_name, int(width), int(height), int(eval(r_frame_rate))
-        else:
-            raise ValueError("No valid matches found in ffprobe output.")
-    
-    except subprocess.CalledProcessError as e:
-        return f"ffprobe command failed with error: {e}"
-    except subprocess.TimeoutExpired:
-        return "ffprobe command timed out."
-    except Exception as e:
-        return f"An unexpected error occurred: {e}"
 
-def process_video(video_url):
-    channel_name, channel_url, speed = video_url
-    try:
-        codec_name, width, height, r_frame_rate = check_video_source_with_ffmpeg(channel_url)
-        return (codec_name, width, height, r_frame_rate)
-    except ValueError as e:
-        print(f"Error parsing ffprobe output for {video_url}: {e}")
-        return (None, None, None, None)
-    except Exception as e:
-        print(f"An error occurred for {video_url}: {e}")
-        return (None, None, None, None)
-
-# 最大线程数
-max_workers = 50
-video_urls = set(results)
+# 处理过滤有可能播放异常的源
+urls = set(results)
 results = []
-# 使用ThreadPoolExecutor创建线程池
-with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-    # 提交任务到线程池
-    future_to_url = {executor.submit(process_video, url): url for url in video_urls}
-    for future in concurrent.futures.as_completed(future_to_url):
-        url = future_to_url[future]
-        try:
-            # 获取任务返回的结果（分辨率和码率）
-            resolution_and_bitrate = future.result()
-            # 处理或记录结果
-            print(f"Results for {url}: {resolution_and_bitrate}")
-            codec_name, width, height, r_frame_rate = resolution_and_bitrate
-            if codec_name == 'h264' and width >= 720 and r_frame_rate < 50:
+err_results = []
+
+def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认为 10 秒
+    channel_name, url, speed = video_url
+    # FFmpeg命令，使用-v error级别来只显示错误信息
+    ffmpeg_cmd = [
+        'ffmpeg',
+        '-v', 'error',
+        '-i', url,
+        '-f', 'null',
+        '-',
+    ]
+
+    try:
+        completed_process = subprocess.run(ffmpeg_cmd, stderr=subprocess.PIPE, check=False, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return True  # 如果超时，视为错误并返回 False（在这里超时全部视为正常，因前面已经有过判断了）
+
+    # 检查stderr中是否包含特定的错误信息
+    error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
+    if error_pattern.search(completed_process.stderr.decode('utf-8')):
+        return False  # 如果找到错误，返回 False
+    else:
+        return True  # 如果没有找到错误，返回 True
+        
+def main():
+    max_threads = 50
+    timeout_seconds = 15  # 自定义超时时间，这里设置为 15 秒
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
+        futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
+
+        for future in concurrent.futures.as_completed(futures):
+            url = futures[future]
+            try:
+                ret = future.result()
+                if ret:
+                    results.append(url)
+                    print(f"应该正常的源 {url}")
+                else:
+                    err_results.append(url)
+                    print(f"Header missing {url}")
+            except Exception as e:
                 results.append(url)
-        except Exception as exc:
-            print(f'{url} generated an exception: {exc}')
+                print(f"超时，但应该是正常的源 {url}")
+                # print(f"Error occurred for URL {url}: {e}")
+
+if __name__ == "__main__":
+    main()
 
 def channel_key(channel_name):
     match = re.search(r'\d+', channel_name)
