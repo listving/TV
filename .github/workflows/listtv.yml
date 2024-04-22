@@ -50,30 +50,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
-          
-      - name: Run china combil
-        run: python ${{ github.workspace }}/nanxun_tv.py
-        
+
       - name: Run hotel_ipname
         run: python ${{ github.workspace }}/hotel_ipname.py
-
-      - name: Run cctv
-        run: python ${{ github.workspace }}/cctv.py
-          
-      - name: Run weishi
-        run: python ${{ github.workspace }}/weishi.py
-          
-      - name: Run ktpd
-        run: python ${{ github.workspace }}/ktpd.py
-          
-      - name: Run ysyl
-        run: python ${{ github.workspace }}/ysyl.py
-             
-      - name: Run qita
-        run: python ${{ github.workspace }}/qita.py
-        
-      - name: Run tv570
-        run: python ${{ github.workspace }}/tv570.py
         
       - name: 提交更改
         run: |
