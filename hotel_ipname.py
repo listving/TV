@@ -94,7 +94,7 @@ dqlist = []
 infoList = []
 urls_y = []
 resultslist = []
-page = 30
+page = random.randint(20, 40)
 list_page = 0
 urls = [
     "http://tonkiang.us/hoteliptv.php?page=1&s=江苏",
