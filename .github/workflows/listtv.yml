@@ -1,7 +1,7 @@
 name: Seek cctv setup
 on:
-  # schedule:
-  #   - cron: '0 2,6,10,14,18,22 * * *'  #时区+8
+  schedule:
+    - cron: '0 2,6,10,14,18,22 * * *'  #时区+8
   # 手动运行
   workflow_dispatch:
 
@@ -50,7 +50,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
-
+          
+      - name: Run hotel_ipname
+        run: python ${{ github.workspace }}/hotel_ipname.py
+        
       - name: Run cctv
         run: python ${{ github.workspace }}/cctv.py
         
