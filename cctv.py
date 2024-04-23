@@ -106,7 +106,7 @@ with open("newitv.txt", 'w', encoding='utf-8') as file:
 
 # 合并文件内容
 file_contents = []
-file_paths = ["cctv.txt", "weishi.txt", "ktpd.txt", "ysyl.txt","xiangang.txt", "qita.txt", "newitv.txt"]  # 替换为实际的文件路径列表
+file_paths = ["newitv.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as file:
@@ -141,6 +141,7 @@ with open("itv.txt", 'w', encoding='utf-8') as file:
 
 results = []
 channels = []
+dq_list = []    # 地区列表，在后面按地区生成文本
 with open("itv.txt", 'r', encoding='utf-8') as file:
     lines = file.readlines()
     for line in lines:
@@ -149,9 +150,15 @@ with open("itv.txt", 'r', encoding='utf-8') as file:
         if count == 1:
             if line:
                 channel_name, channel_url = line.split(',')
-                if 'CCTV' in channel_name or 'CETV' in channel_name or 'CQTV' in channel_name or 'IPTV' in channel_name:
-                    channels.append((channel_name, channel_url))
+                channels.append((channel_name, channel_url))
+                dq_count = channel_name.count('_')
+                if dq_count == 3:
+                    dq, dq1, dq2, dq3 = channel_name.split('_')
+                    dq_list.append(f"{dq}_{dq1}")
     file.close()
+
+dq_list = set(dq_list) # 去重得到唯一的地区列表
+
 # 定义工作线程函数
 def worker():
     while True:
@@ -311,17 +318,6 @@ if __name__ == "__main__":
     main()
     
 # 打开移动源文件
-with open("chinamobile.txt", 'r', encoding='utf-8') as file:
-    lines = file.readlines()
-    for line in lines:
-        line = line.strip()
-        count = line.count(',')
-        if count == 1:
-            if line:
-                channel_name, channel_url = line.split(',')
-                if 'CCTV' in channel_name:
-                    result = channel_name, channel_url, "0.001 MB/s"
-                    results.append(result)
                     
 def channel_key(channel_name):
     match = re.search(r'\d+', channel_name)
@@ -342,25 +338,66 @@ with open("cctv_all_results.txt", 'w', encoding='utf-8') as file:
         file.write(f"{channel_name},{channel_url},{speed}\n")
     file.close()
     
-result_counter = 16  # 每个频道需要的个数
+result_counter = 8  # 每个频道需要的个数
 
-with open("cctv.txt", 'w', encoding='utf-8') as file:
-    channel_counters = {}
-    file.write('【  央视频道  】,#genre#\n')
-    for result in results:
-        channel_name, channel_url, speed = result
-        if 'CCTV' in channel_name or 'CETV' in channel_name or 'CQTV' in channel_name or 'IPTV' in channel_name:
-            if channel_name in channel_counters:
-                if channel_counters[channel_name] >= result_counter:
-                    continue
-                else:
-                    file.write(f"{channel_name},{channel_url}\n")
-                    channel_counters[channel_name] += 1
-            else:
-                file.write(f"{channel_name},{channel_url}\n")
-                channel_counters[channel_name] = 1
+for fname in dq_list:
+    file_name = f"z_{fname}.txt"
+    try:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            channel_counters = {}
+            file.write('【  央视频道  】,#genre#\n')
+            for result in results:
+                channel_name, channel_url, speed = result
+                name =(f"{channel_name}")
+                name = name.replace(fname, "")
+                if 'CCTV' in channel_name and fname in channel_name:
+                    if channel_name in channel_counters:
+                        if channel_counters[channel_name] >= result_counter:
+                            continue
+                        else:
+                            file.write(f"{name},{channel_url}\n")
+                            channel_counters[channel_name] += 1
+                    else:
+                        file.write(f"{name},{channel_url}\n")
+                        channel_counters[channel_name] = 1
 
-    file.close()
+            channel_counters = {}
+            file.write('【  卫视频道  】,#genre#\n')
+            for result in results:
+                channel_name, channel_url, speed = result
+                name =(f"{channel_name}")
+                name = name.replace(fname, "")
+                if '卫视' in channel_name and fname in channel_name:
+                    if channel_name in channel_counters:
+                        if channel_counters[channel_name] >= result_counter:
+                            continue
+                        else:
+                            file.write(f"{name},{channel_url}\n")
+                            channel_counters[channel_name] += 1
+                    else:
+                        file.write(f"{name},{channel_url}\n")
+                        channel_counters[channel_name] = 1
+
+            channel_counters = {}
+            file.write('【  其他频道  】,#genre#\n')
+            for result in results:
+                channel_name, channel_url, speed = result
+                if fname in channel_name:
+                    name =(f"{channel_name}")
+                    name = name.replace(fname, "")
+                    if '卫视' not in channel_name and 'cctv' not in channel_name:
+                        if channel_name in channel_counters:
+                            if channel_counters[channel_name] >= result_counter:
+                                continue
+                            else:
+                                file.write(f"{name},{channel_url}\n")
+                                channel_counters[channel_name] += 1
+                        else:
+                            file.write(f"{name},{channel_url}\n")
+                            channel_counters[channel_name] = 1
+            file.close()
+    except Exception as e:
+        print(f"An error occurred while creating or writing to file {file_name}: {e}")
 print("有可能异常的源")
 for lin in err_results:
     print(lin)
