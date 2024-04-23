@@ -106,7 +106,7 @@ with open("newitv.txt", 'w', encoding='utf-8') as file:
 
 # 合并文件内容
 file_contents = []
-file_paths = ["newitv.txt"]  # 替换为实际的文件路径列表
+file_paths = ["cctv_all.txt", "newitv.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as file:
@@ -281,10 +281,10 @@ results.sort(key=lambda x: channel_key(x[0]))
 now_today = datetime.date.today()
 
 # 将结果写入文件
-with open("cctv_all_results.txt", 'w', encoding='utf-8') as file:
+with open("cctv_all.txt", 'w', encoding='utf-8') as file:
     for result in results:
         channel_name, channel_url, speed = result
-        file.write(f"{channel_name},{channel_url},{speed}\n")
+        file.write(f"{channel_name},{channel_url}\n")
     file.close()
     
 result_counter = 8  # 每个频道需要的个数
