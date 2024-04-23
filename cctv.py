@@ -294,12 +294,16 @@ for fname in dq_list:
     try:
         with open(file_name, 'w', encoding='utf-8') as file:
             channel_counters = {}
-            file.write('【  央视_电信  】,#genre#\n')
+            find = 0
+            # file.write('央视_电信,#genre#\n')
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if 'CCTV' in channel_name and fname in channel_name and '电信' in channel_name:
+                    if find == 0:
+                        file.write('央视_电信,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -310,12 +314,17 @@ for fname in dq_list:
                         file.write(f"{name},{channel_url}\n")
                         channel_counters[channel_name] = 1
                         
-            file.write('【  央视_联通  】,#genre#\n')
+            # file.write('央视_联通,#genre#\n')
+            channel_counters = {}
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if 'CCTV' in channel_name and fname in channel_name and '联通' in channel_name:
+                    if find == 0:
+                        file.write('央视_联通,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -325,12 +334,18 @@ for fname in dq_list:
                     else:
                         file.write(f"{name},{channel_url}\n")
                         channel_counters[channel_name] = 1
-            file.write('【  央视_移动  】,#genre#\n')
+                        
+            # file.write('央视_移动,#genre#\n')
+            channel_counters = {}
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if 'CCTV' in channel_name and fname in channel_name and '移动' in channel_name:
+                    if find == 0:
+                        file.write('央视_移动,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -342,12 +357,16 @@ for fname in dq_list:
                         channel_counters[channel_name] = 1
                         
             channel_counters = {}
-            file.write('【  卫视_电信  】,#genre#\n')
+            # file.write('卫视_电信,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if '卫视' in channel_name and fname in channel_name and '电信' in channel_name:
+                    if find == 0:
+                        file.write('卫视_电信,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -359,12 +378,16 @@ for fname in dq_list:
                         channel_counters[channel_name] = 1
 
             channel_counters = {}
-            file.write('【  卫视_联通  】,#genre#\n')
+            # file.write('卫视_联通,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if '卫视' in channel_name and fname in channel_name and '联通' in channel_name:
+                    if find == 0:
+                        file.write('卫视_联通,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -376,12 +399,16 @@ for fname in dq_list:
                         channel_counters[channel_name] = 1
                         
             channel_counters = {}
-            file.write('【  卫视_移动  】,#genre#\n')
+            # file.write('卫视_移动,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
                 name = name.replace(fname + "_", "")
                 if '卫视' in channel_name and fname in channel_name and '移动' in channel_name:
+                    if find == 0:
+                        file.write('卫视_移动,#genre#\n')
+                        find = 1
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
                             continue
@@ -393,13 +420,17 @@ for fname in dq_list:
                         channel_counters[channel_name] = 1
                         
             channel_counters = {}
-            file.write('【  其他_电信  】,#genre#\n')
+            # file.write('其他_电信,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '电信' in channel_name:
                     name =(f"{channel_name}")
                     name = name.replace(fname + "_", "")
                     if '卫视' not in channel_name and 'CCTV' not in channel_name:
+                        if find == 0:
+                            file.write('其他_电信,#genre#\n')
+                            find = 1
                         if channel_name in channel_counters:
                             if channel_counters[channel_name] >= result_counter:
                                 continue
@@ -411,13 +442,17 @@ for fname in dq_list:
                             channel_counters[channel_name] = 1
 
             channel_counters = {}
-            file.write('【  其他_联通  】,#genre#\n')
+            # file.write('其他_联通,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '联通' in channel_name:
                     name =(f"{channel_name}")
                     name = name.replace(fname + "_", "")
                     if '卫视' not in channel_name and 'CCTV' not in channel_name:
+                        if find == 0:
+                            file.write('其他_联通,#genre#\n')
+                            find = 1
                         if channel_name in channel_counters:
                             if channel_counters[channel_name] >= result_counter:
                                 continue
@@ -430,13 +465,17 @@ for fname in dq_list:
 
 
             channel_counters = {}
-            file.write('【  其他_移动  】,#genre#\n')
+            # file.write('其他_移动,#genre#\n')
+            find == 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '移动' in channel_name:
                     name =(f"{channel_name}")
                     name = name.replace(fname + "_", "")
                     if '卫视' not in channel_name and 'CCTV' not in channel_name:
+                        if find == 0:
+                            file.write('其他_移动,#genre#\n')
+                            find = 1
                         if channel_name in channel_counters:
                             if channel_counters[channel_name] >= result_counter:
                                 continue
