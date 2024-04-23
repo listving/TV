@@ -334,7 +334,7 @@ for fname in dq_list:
                 if fname in channel_name:
                     name =(f"{channel_name}")
                     name = name.replace(fname + "_", "")
-                    if '卫视' not in channel_name or 'cctv' not in channel_name:
+                    if '卫视' not in channel_name and 'cctv' not in channel_name:
                         if channel_name in channel_counters:
                             if channel_counters[channel_name] >= result_counter:
                                 continue
