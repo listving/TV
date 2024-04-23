@@ -51,8 +51,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      - name: Run hotel_ipname
-        run: python ${{ github.workspace }}/hotel_ipname.py
+      - name: Run cctv
+        run: python ${{ github.workspace }}/cctv.py
         
       - name: 提交更改
         run: |
