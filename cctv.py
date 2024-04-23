@@ -249,7 +249,7 @@ def worker():
 
 
 # 创建多个工作线程
-num_threads = 200
+num_threads = 300
 for _ in range(num_threads):
     t = threading.Thread(target=worker, daemon=True) 
     #t = threading.Thread(target=worker, args=(event,len(channels)))  # 将工作线程设置为守护线程
@@ -347,6 +347,4 @@ for fname in dq_list:
             file.close()
     except Exception as e:
         print(f"An error occurred while creating or writing to file {file_name}: {e}")
-print("有可能异常的源")
-for lin in err_results:
-    print(lin)
+
