@@ -249,7 +249,7 @@ def worker():
 
 
 # 创建多个工作线程
-num_threads = 100
+num_threads = 200
 for _ in range(num_threads):
     t = threading.Thread(target=worker, daemon=True) 
     #t = threading.Thread(target=worker, args=(event,len(channels)))  # 将工作线程设置为守护线程
@@ -265,58 +265,7 @@ task_queue.join()
 
 
 # 处理过滤有可能播放异常的源
-urls = set(results)
-results = []
-err_results = []
 
-def check_live_stream_for_errors(video_url, timeout=10):  # timeout 参数默认为 10 秒
-    channel_name, url, speed = video_url
-    # FFmpeg命令，使用-v error级别来只显示错误信息
-    ffmpeg_cmd = [
-        'ffmpeg',
-        '-v', 'error',
-        '-i', url,
-        '-f', 'null',
-        '-',
-    ]
-
-    try:
-        completed_process = subprocess.run(ffmpeg_cmd, stderr=subprocess.PIPE, check=False, timeout=timeout)
-    except subprocess.TimeoutExpired:
-        return True  # 如果超时，视为错误并返回 False（在这里超时全部视为正常，因前面已经有过判断了）
-
-    # 检查stderr中是否包含特定的错误信息
-    error_pattern = re.compile(r'\[mp3float @ .+\] Header missing')
-    if error_pattern.search(completed_process.stderr.decode('utf-8')):
-        return False  # 如果找到错误，返回 False
-    else:
-        return True  # 如果没有找到错误，返回 True
-        
-def main():
-    max_threads = 50
-    timeout_seconds = 15  # 自定义超时时间，这里设置为 15 秒
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
-        futures = {executor.submit(check_live_stream_for_errors, url, timeout_seconds): url for url in urls}
-
-        for future in concurrent.futures.as_completed(futures):
-            url = futures[future]
-            try:
-                ret = future.result()
-                if ret:
-                    results.append(url)
-                    print(f"应该正常的源 {url}")
-                else:
-                    err_results.append(url)
-                    print(f"Header missing {url}")
-            except Exception as e:
-                results.append(url)
-                print(f"超时，但应该是正常的源 {url}")
-                # print(f"Error occurred for URL {url}: {e}")
-
-if __name__ == "__main__":
-    main()
-    
 # 打开移动源文件
                     
 def channel_key(channel_name):
