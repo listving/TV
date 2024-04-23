@@ -298,7 +298,7 @@ for fname in dq_list:
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
-                name = name.replace(fname, "")
+                name = name.replace(fname + "_", "")
                 if 'CCTV' in channel_name and fname in channel_name:
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
@@ -315,7 +315,7 @@ for fname in dq_list:
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
-                name = name.replace(fname, "")
+                name = name.replace(fname + "_", "")
                 if '卫视' in channel_name and fname in channel_name:
                     if channel_name in channel_counters:
                         if channel_counters[channel_name] >= result_counter:
@@ -333,8 +333,8 @@ for fname in dq_list:
                 channel_name, channel_url, speed = result
                 if fname in channel_name:
                     name =(f"{channel_name}")
-                    name = name.replace(fname, "")
-                    if '卫视' not in channel_name and 'cctv' not in channel_name:
+                    name = name.replace(fname + "_", "")
+                    if '卫视' not in channel_name or 'cctv' not in channel_name:
                         if channel_name in channel_counters:
                             if channel_counters[channel_name] >= result_counter:
                                 continue
