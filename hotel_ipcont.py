@@ -153,7 +153,16 @@ if response.status_code == 200:
                         cc, dd = href.split('=')
                         if len(cc) > 0:
                             seek_find = cc
-                            print("更换参数名称，状态码：", response.status_code)
+                            print("更换参数名称，状态码：", response.status_code,seek_find)
+                            break
+                elif count == 2:
+                    aa, bb, bb1 = href.split('&')
+                    cou = bb.count('=')
+                    if cou == 1:
+                        cc, dd = href.split('=')
+                        if len(cc) > 0:
+                            seek_find = cc
+                            print("更换参数名称，状态码：", response.status_code,seek_find)
                             break
     except:
         print("请求失败，状态码：", response.status_code)
