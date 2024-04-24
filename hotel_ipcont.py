@@ -143,7 +143,7 @@ if response.status_code == 200:
         # 遍历所有的<a>标签，提取href属性，并解析出rnd的值
         for link in links:
             href = link.get('href')  # 获取href属性的值
-            if href and 'rnd=' in href:  # 检查href是否包含'rnd='
+            if href:
                 print(href)  # 打印rnd的值
                 count = href.count('&')
                 if count == 1:
