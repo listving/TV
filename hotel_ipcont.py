@@ -128,18 +128,18 @@ data = {
 }
 print('测试url=',test_url)
 response = requests.post(test_url, data=data)
-time.sleep(10)
 if response.status_code == 200:
     try:
         print("请求成功，状态码：", response.status_code)
         # 打印响应内容
         html = response.text
-        print(html)
-        soup11 = BeautifulSoup(html, 'html.parser')
         
+        soup11 = BeautifulSoup(html, 'html.parser')
+        print(soup11)
         # 查找所有的<a>标签
         links = soup11.find_all('a')
-        
+        print("***********************************************************************************")
+        print(links)
         # 遍历所有的<a>标签，提取href属性，并解析出rnd的值
         for link in links:
             href = link.get('href')  # 获取href属性的值
