@@ -1,6 +1,5 @@
 央视｜联通,#genre#
 CCTV4_联通,http://114.245.189.113:10000/rtp/239.3.1.213:4220
-CCTV4_联通,http://114.245.189.113:10000/rtp/239.3.1.105:8092
 CCTV4美洲_联通,http://114.245.189.113:10000/rtp/239.3.1.214:4220
 CCTV5+_联通,http://114.245.189.113:10000/rtp/239.3.1.130:8004
 CCTV7_联通,http://114.245.189.113:10000/rtp/239.3.1.61:8104
@@ -14,8 +13,8 @@ CCTV15_联通,http://114.245.189.113:10000/rtp/239.3.1.153:8136
 山西卫视_联通,http://114.245.189.113:10000/rtp/239.3.1.42:8172
 新疆卫视_联通,http://114.245.189.113:10000/rtp/239.3.1.48:8160
 湖南卫视_联通,http://114.245.189.113:10000/rtp/239.3.1.132:8012
+其他｜联通,#genre#
 CETV1_联通,http://114.245.189.113:10000/rtp/239.3.1.57:8152
-CETV3_联通,http://114.245.189.113:10000/rtp/239.3.1.55:4120
 爱上4K超清_联通,http://114.245.189.113:10000/rtp/239.3.1.236:2000
 苏州4K_联通,http://liveshowbak2.kan0512.com/ksz-norecord/csztv4k_4k.m3u8
 BRTV影视_联通,http://114.245.189.113:10000/rtp/239.3.1.158:8000
@@ -28,7 +27,6 @@ CGTN新闻_联通,http://114.245.189.113:10000/rtp/239.3.1.215:4220
 上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-动画_联通,http://114.245.189.113:10000/rtp/239.3.1.80:4120
 哈尔滨娱乐_联通,http://stream.hrbtv.net/ylpd/sd/live.m3u8
 哈尔滨都市资讯_联通,http://stream.hrbtv.net/zxpd/sd/live.m3u8
 好学生_联通,http://114.245.189.113:10000/rtp/239.3.1.81:4120
@@ -45,7 +43,6 @@ CGTN新闻_联通,http://114.245.189.113:10000/rtp/239.3.1.215:4220
 淘娱乐_联通,http://114.245.189.113:10000/rtp/239.3.1.100:8001
 淘精彩_联通,http://114.245.189.113:10000/rtp/239.3.1.178:8001
 热播剧场_联通,http://114.245.189.113:10000/rtp/239.3.1.194:9020
-睛彩广场舞_联通,http://114.245.189.113:10000/rtp/239.3.1.128:8001
 绍兴公共_联通,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8
 绍兴文化影视_联通,http://live.shaoxing.com.cn/video/s10001-sxtv3/index.m3u8
 缙云综合_联通,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8?zzhed
