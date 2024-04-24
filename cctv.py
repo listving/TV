@@ -103,10 +103,15 @@ with open("newitv.txt", 'w', encoding='utf-8') as file:
         file.write(result + "\n")
         # print(result)
     file.close()
-
+    
+   
 # 合并文件内容
 file_contents = []
-file_paths = ["cctv_all.txt", "newitv.txt"]  # 替换为实际的文件路径列表
+if len(results) < 10000:
+    file_paths = ["cctv_all.txt", "newitv.txt"]  # 替换为实际的文件路径列表
+else:
+    file_paths = ["newitv.txt"]  # 替换为实际的文件路径列表
+    
 for file_path in file_paths:
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as file:
