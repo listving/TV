@@ -152,6 +152,7 @@ if response.status_code == 200:
                         cc, dd = href.split('=')
                         if len(cc) > 0:
                             seek_find = cc
+                            print("更换参数名称，状态码：", response.status_code)
                             break
     except:
         print("请求失败，状态码：", response.status_code)
@@ -279,7 +280,7 @@ for i in range(1, page + 1):
                                     url_name = '未知'
                             name_html_txt = f"{url_name}"
                             name_html_txt = name_html_txt.replace(" ", "").replace("\n", "")
-                            print(name_html_txt)
+                            # print(name_html_txt)
                             # print("1===========================================================================================================")
                             if "移动" in html_txt:
                                 ipname = '移动'
@@ -380,7 +381,7 @@ def worker(thread_url,counter_id):
             urlsp =f"{url_int}"
             if len(urlsp) == 0:
                 urlsp = "rtp://127.0.0.1"             
-            print(f"{dq_name}_{url_name}\t{url_int}")
+            # print(f"{dq_name}_{url_name}\t{url_int}")
             #print("-------------------------------------------------------------------------------------------------------")
             urlsp = urlsp.replace("http://67.211.73.118:9901", "")
             name = name.replace("cctv", "CCTV")
@@ -471,5 +472,5 @@ infoList = sorted(infoList)
 with open("myitv.txt", 'w', encoding='utf-8') as file:
     for info in infoList:
         file.write(info + "\n")
-        print(info)
+        # print(info)
     file.close()
