@@ -227,7 +227,7 @@ def worker():
                             if k:
                                 chunk_len = len(k)
                                 if chunk_len >= chunk_size:
-                                    print(f'{time.time()-now:.2f}\t{channel_url}')
+                                    # print(f'{time.time()-now:.2f}\t{channel_url}')
                                     response_time = (time.time()-now) * 1
                                     download_speed = chunk_len / response_time / 1024
                                     normalized_speed = min(max(download_speed / 1024, 0.001), 100)
@@ -254,7 +254,7 @@ def worker():
 
 
 # 创建多个工作线程
-num_threads = 200
+num_threads = 150
 for _ in range(num_threads):
     t = threading.Thread(target=worker, daemon=True) 
     #t = threading.Thread(target=worker, args=(event,len(channels)))  # 将工作线程设置为守护线程
