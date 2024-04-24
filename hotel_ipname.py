@@ -128,7 +128,6 @@ data = {
 }
 print('测试url=',test_url)
 response = requests.post(test_url, data=data)
-time.sleep(10)
 if response.status_code == 200:
     try:
         print("请求成功，状态码：", response.status_code)
