@@ -150,8 +150,8 @@ if response.status_code == 200:
                 if count >= 1:
                     bb = href.split('&')[1]
                     cou = bb.count('=')
-                    if cou == 1:
-                        cc, dd = href.split('=')
+                    if cou >= 1:
+                        cc = href.split('=')[0]
                         if len(cc) > 0:
                             seek_find = cc
                             print("更换参数名称，状态码：", response.status_code,seek_find)
