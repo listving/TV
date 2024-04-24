@@ -358,7 +358,7 @@ for fname in dq_list:
                         
             channel_counters = {}
             # file.write('卫视_电信,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
@@ -379,7 +379,7 @@ for fname in dq_list:
 
             channel_counters = {}
             # file.write('卫视_联通,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
@@ -400,7 +400,7 @@ for fname in dq_list:
                         
             channel_counters = {}
             # file.write('卫视_移动,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 name =(f"{channel_name}")
@@ -421,7 +421,7 @@ for fname in dq_list:
                         
             channel_counters = {}
             # file.write('其他_电信,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '_电信' in channel_name:
@@ -443,7 +443,7 @@ for fname in dq_list:
 
             channel_counters = {}
             # file.write('其他_联通,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '_联通' in channel_name:
@@ -466,7 +466,7 @@ for fname in dq_list:
 
             channel_counters = {}
             # file.write('其他_移动,#genre#\n')
-            find == 0
+            find = 0
             for result in results:
                 channel_name, channel_url, speed = result
                 if fname in channel_name and '_移动' in channel_name:
