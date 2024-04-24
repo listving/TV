@@ -134,7 +134,7 @@ if response.status_code == 200:
         print("请求成功，状态码：", response.status_code)
         # 打印响应内容
         html = response.text
-        print(html)
+        # print(html)
         soup11 = BeautifulSoup(html, 'html.parser')
         
         # 查找所有的<a>标签
@@ -143,17 +143,18 @@ if response.status_code == 200:
         # 遍历所有的<a>标签，提取href属性，并解析出rnd的值
         for link in links:
             href = link.get('href')  # 获取href属性的值
-            if href and 'rnd=' in href:  # 检查href是否包含'rnd='
+            if href and 'page=' in href:
                 print(href)  # 打印rnd的值
                 count = href.count('&')
-                if count == 1:
-                    aa, bb = href.split('&')
+                print(count)
+                if count >= 1:
+                    bb = href.split('&')[1]
                     cou = bb.count('=')
-                    if cou == 1:
-                        cc, dd = href.split('=')
+                    if cou >= 1:
+                        cc = bb.split('=')[0]
                         if len(cc) > 0:
                             seek_find = cc
-                            print("更换参数名称，状态码：", response.status_code)
+                            print("更换参数名称，状态码：", response.status_code,seek_find)
                             break
     except:
         print("请求失败，状态码：", response.status_code)
