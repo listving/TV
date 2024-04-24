@@ -128,12 +128,13 @@ data = {
 }
 print('测试url=',test_url)
 response = requests.post(test_url, data=data)
+time.sleep(10)
 if response.status_code == 200:
     try:
         print("请求成功，状态码：", response.status_code)
         # 打印响应内容
         html = response.text
-        # print(html)
+        print(html)
         soup11 = BeautifulSoup(html, 'html.parser')
         
         # 查找所有的<a>标签
