@@ -164,6 +164,6 @@ if response.status_code == 200:
                             seek_find = cc
                             print("更换参数名称，状态码：", response.status_code,seek_find)
                             break
-    except:
-        print("请求失败，状态码：", response.status_code)
+    except Exception as e:
+        print(f"=========================>>> error {e}")
 print("***********************************************************************************")
