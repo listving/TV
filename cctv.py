@@ -107,11 +107,7 @@ with open("newitv.txt", 'w', encoding='utf-8') as file:
    
 # 合并文件内容
 file_contents = []
-if len(results) < 10000:
-    file_paths = ["cctv_all.txt", "newitv.txt"]  # 替换为实际的文件路径列表
-else:
-    file_paths = ["newitv.txt"]  # 替换为实际的文件路径列表
-    
+file_paths = ["cctv_all.txt", "newitv.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding="utf-8") as file:
@@ -254,7 +250,7 @@ def worker():
 
 
 # 创建多个工作线程
-num_threads = 150
+num_threads = 100
 for _ in range(num_threads):
     t = threading.Thread(target=worker, daemon=True) 
     #t = threading.Thread(target=worker, args=(event,len(channels)))  # 将工作线程设置为守护线程
@@ -286,10 +282,23 @@ results.sort(key=lambda x: channel_key(x[0]))
 now_today = datetime.date.today()
 
 # 将结果写入文件
+result_counter = 16  # 每个频道需要的个数
 with open("cctv_all.txt", 'w', encoding='utf-8') as file:
-    for result in results:
-        channel_name, channel_url, speed = result
-        file.write(f"{channel_name},{channel_url}\n")
+    channel_counters = {}
+    try:
+        for result in results:
+            channel_name, channel_url, speed = result
+            if channel_name in channel_counters:
+                if channel_counters[channel_name] >= result_counter:
+                    continue
+                else:
+                    file.write(f"{channel_name},{channel_url}\n")
+                    channel_counters[channel_name] += 1
+            else:
+                file.write(f"{channel_name},{channel_url}\n")
+                channel_counters[channel_name] = 1
+    except Exception as e:
+        print(f"An error occurred while creating or writing to file : {e}")
     file.close()
     
 result_counter = 8  # 每个频道需要的个数
