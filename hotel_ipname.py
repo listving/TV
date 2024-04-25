@@ -136,8 +136,8 @@ for i in range(1, page + 1):
             print(url)
             response = requests.post(url, data=data, timeout=15)
         else:
-            if len(end_url) > 0:
-                retu_url = end_retu_url.name.replace("?page=1", f'?page={i}')
+            if len(end_retu_url) > 0:
+                retu_url = end_retu_url.replace("?page=1", f'?page={i}')
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
             response = requests.get(url, timeout=15)
