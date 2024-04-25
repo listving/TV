@@ -139,12 +139,15 @@ for i in range(1, page + 1):
             if len(end_retu_url) > 0:
                 retu_url = end_retu_url.replace("?page=1", f'?page={i}')
                 code_name = re.search(r'\d+', end_url[2])
-                print('code_name',code_name)
+                if code_name:
+                    # 如果找到了数字，则提取并打印
+                    number_str = code_name.group()
+                print('code_name',number_str)
                 data = {
                     'search': f'{test_name}',
-                    'code': f'{code_name}'
+                    'code': f'{number_str}'
                 }
-            url = f'http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}' 
+            url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
             response = requests.post(url, data=data, timeout=15)
 
