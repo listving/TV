@@ -124,7 +124,8 @@ def is_odd_or_even(number):
 test_url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'  # 请替换为实际的提交URL
 test_name = random.choice(diqu)
 data = {
-    'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
+    'search': f'{test_name}',  # 使用f-string插入变量值（Python 3.6+）
+    'page': '2'
 }
 print('测试url=',test_url)
 response = requests.post(test_url, data=data)
