@@ -134,13 +134,13 @@ for i in range(1, page + 1):
         if i == 1:
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'
             print(url)
-            response = requests.post(test_url, data=data, timeout=15)
+            response = requests.post(url, data=data, timeout=15)
         else:
             if len(end_url) > 0:
                 retu_url = end_retu_url.name.replace("?page=1", f'?page={i}')
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
-            response = requests.get(test_url, timeout=15)
+            response = requests.get(url, timeout=15)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, "html.parser")
