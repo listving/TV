@@ -322,7 +322,7 @@ def worker(thread_url,counter_id):
             urlsp =f"{url_int}"
             if len(urlsp) == 0:
                 urlsp = "rtp://127.0.0.1"             
-            # print(f"{dq_name}_{url_name}\t{url_int}")
+            print(f"{dq_name}_{url_name}\t{url_int}")
             #print("-------------------------------------------------------------------------------------------------------")
             urlsp = urlsp.replace("http://67.211.73.118:9901", "")
             name = name.replace("cctv", "CCTV")
