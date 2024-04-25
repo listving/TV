@@ -124,16 +124,18 @@ def is_odd_or_even(number):
 tonkiang_err = 0
 foodieguide_err = 0
 test_name = random.choice(diqu)
-data = {
-    'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
-}
+
 headers={'User-Agent': 'okhttp/3.15 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
 se=requests.Session()
-for i in range(1, page + 1):
+for i in diqu:
     try:
         # 创建一个Chrome WebDriver实例
+        data = {
+            'search': f'{i}'  # 使用f-string插入变量值（Python 3.6+）
+        }
         results = []
-        if i == 1:
+        keypage = 1
+        if keypage == 1:
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'
             print(url)
             response = se.post(url, data=data, headers=headers, timeout=15)
@@ -259,6 +261,7 @@ for i in range(1, page + 1):
     except Exception as e:
         print(f"=========================>>> Thread {url} error {e}")
     finally:
+        time.sleep(10)
         if list_page > 0:
             if i >= list_page:
                 break
