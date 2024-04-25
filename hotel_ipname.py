@@ -127,6 +127,7 @@ test_name = random.choice(diqu)
 data = {
     'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
+se=requests.Session()
 for i in range(1, page + 1):
     try:
         # 创建一个Chrome WebDriver实例
@@ -134,7 +135,7 @@ for i in range(1, page + 1):
         if i == 1:
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'
             print(url)
-            response = requests.post(url, data=data, timeout=15)
+            response = se.post(url, data=data, timeout=15)
         else:
             if len(end_retu_url) > 0:
                 retu_url = end_retu_url.replace("?page=1", f'?page={i}')
@@ -148,7 +149,7 @@ for i in range(1, page + 1):
                 }
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
-            response = requests.get(url, data=data, timeout=15)
+            response = se.get(url, data=data, timeout=15)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, "html.parser")
