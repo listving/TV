@@ -138,10 +138,14 @@ for i in range(1, page + 1):
         else:
             if len(end_retu_url) > 0:
                 retu_url = end_retu_url.replace("?page=1", f'?page={i}')
-            url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
+                code_name = re.search(r'\d+', end_url[2])
+                print('code_name',code_name)
+                data = {
+                    'search': f'{test_name}',
+                    'code': f'{code_name}'
+                }
+            url = f'http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}' 
             print(url)
-            response = requests.post(url, data=data, timeout=15)
-            time.sleep(5)
             response = requests.post(url, data=data, timeout=15)
 
         if response.status_code == 200:
