@@ -144,12 +144,11 @@ for i in range(1, page + 1):
                     number_str = code_name.group()
                 print('code_name',number_str)
                 data = {
-                    'search': f'{test_name}',
-                    'code': f'{number_str}'
+                    'search': f'{test_name}'
                 }
-            url = f'http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}'
+            url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
-            response = requests.post(url, data=data, timeout=15)
+            response = requests.get(url, data=data, timeout=15)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, "html.parser")
