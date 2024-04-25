@@ -147,7 +147,7 @@ for i in range(1, page + 1):
                     'search': f'{test_name}',
                     'code': f'{number_str}'
                 }
-            url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
+            url = f'http://foodieguide.com/iptvsearch/hoteliptv.php?page={i}'
             print(url)
             response = requests.post(url, data=data, timeout=15)
 
