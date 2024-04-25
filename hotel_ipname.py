@@ -127,6 +127,7 @@ test_name = random.choice(diqu)
 data = {
     'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
+headers={'User-Agent': 'okhttp/3.15 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
 se=requests.Session()
 for i in range(1, page + 1):
     try:
@@ -135,7 +136,7 @@ for i in range(1, page + 1):
         if i == 1:
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'
             print(url)
-            response = se.post(url, data=data, timeout=15)
+            response = se.post(url, data=data, headers=headers, timeout=15)
         else:
             if len(end_retu_url) > 0:
                 retu_url = end_retu_url.replace("?page=1", f'?page={i}')
@@ -149,7 +150,7 @@ for i in range(1, page + 1):
                 }
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
-            response = se.post(url, data=data, timeout=15)
+            response = se.get(url, headers=headers, timeout=15)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, "html.parser")
