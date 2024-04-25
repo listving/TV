@@ -121,11 +121,11 @@ def is_odd_or_even(number):
         return False
 
 # 测试网站参数
+end_url = []
 test_url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'  # 请替换为实际的提交URL
 test_name = random.choice(diqu)
 data = {
-    'search': f'{test_name}',  # 使用f-string插入变量值（Python 3.6+）
-    'page': '2'
+    'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
 print('测试url=',test_url)
 response = requests.post(test_url, data=data)
@@ -155,7 +155,9 @@ if response.status_code == 200:
                         cc = bb.split('=')[0]
                         if len(cc) > 0:
                             seek_find = cc
+                            end_url = href.split('&')
                             print("更换参数名称，状态码：", response.status_code,seek_find)
+                            print(end_url)
                             break
 
     except Exception as e:
