@@ -141,6 +141,8 @@ for i in range(1, page + 1):
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php' + retu_url
             print(url)
             response = requests.post(url, data=data, timeout=15)
+            time.sleep(5)
+            response = requests.post(url, data=data, timeout=15)
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, "html.parser")
