@@ -52,10 +52,3 @@ jobs:
       - name: Run hotel_ipcont
         run: python ${{ github.workspace }}/hotel_ipcont.py
         
-      - name: 提交更改
-        run: |
-          git config --local user.name "listving" 
-          git config --local user.email "52348899@qq.com"
-          git add .
-          git commit *.txt -m "Add generated file"
-          git push -f
