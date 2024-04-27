@@ -121,18 +121,19 @@ def is_odd_or_even(number):
         return False
 
 # 测试网站参数
+headers={'User-Agent': 'Chrome/10.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+se=requests.Session()
 end_url = []
 test_url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'  # 请替换为实际的提交URL
 test_name = random.choice(diqu)
 data = {
     'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
-print('测试url=',test_url)
-response = requests.post(test_url, data=data)
-response = requests.post(test_url, data=data)
+print('测试url=',test_url, test_name)
+response = se.post(test_url, data=data)
 if response.status_code == 200:
     try:
-        print("请求成功，状态码：", response.status_code, test_name)
+        print("请求成功，状态码：", response.status_code)
         # 打印响应内容
         html = response.text
         
