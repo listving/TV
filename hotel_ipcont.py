@@ -134,6 +134,16 @@ print('测试url=',test_url, test_name)
 json_data = json.dumps(data)
 response = se.post(test_url, data=data, headers=headers)
 if response.status_code == 200:
+    # 获取服务器返回的所有头部信息
+    headers = response.headers
+    
+    # 尝试从头部信息中获取Referer字段
+    referer = headers.get('Referer')
+    if referer:
+        print(f'Server returned Referer: {referer}')
+    else:
+        print('Server did not return a Referer header.')
+        
     try:
         print("请求成功，状态码：", response.status_code)
         # 打印响应内容
