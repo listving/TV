@@ -15,6 +15,7 @@ import urllib.parse
 import math
 import requests
 from requests.exceptions import Timeout
+import json
 
 not_ip = [
     "14.19.199.43:8089",
@@ -130,7 +131,8 @@ data = {
     'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
 print('测试url=',test_url, test_name)
-response = se.post(test_url, data=data)
+json_data = json.dumps(data)
+response = se.post(test_url, json=json_data, headers={'Content-Type': 'application/json'})
 if response.status_code == 200:
     try:
         print("请求成功，状态码：", response.status_code)
