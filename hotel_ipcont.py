@@ -162,7 +162,7 @@ if response.status_code == 200:
                             print("更换参数名称，状态码：", response.status_code,seek_find)
                             print(end_url)
                             break
-        test_url ＝ 'http://foodieguide.com/iptvsearch/hoteliptv.php?page=1' + end_url[1] + '&' + end_url[2]
+        test_url = 'http://foodieguide.com/iptvsearch/hoteliptv.php?page=1' + end_url[1] + '&' + end_url[2]
         print(test_url)
         response = se.post(test_url, data=data, headers=headers)
         if response.status_code == 200:
