@@ -131,26 +131,15 @@ data = {
     'search': f'{test_name}'  # 使用f-string插入变量值（Python 3.6+）
 }
 print('测试url=',test_url, test_name)
-json_data = json.dumps(data)
 response = se.post(test_url, data=data, headers=headers)
 if response.status_code == 200:
-    # 获取服务器返回的所有头部信息
-    headers = response.headers
-    
-    # 尝试从头部信息中获取Referer字段
-    referer = headers.get('Referer')
-    if referer:
-        print(f'Server returned Referer: {referer}')
-    else:
-        print('Server did not return a Referer header.')
-        
     try:
         print("请求成功，状态码：", response.status_code)
         # 打印响应内容
         html = response.text
         
         soup11 = BeautifulSoup(html, 'html.parser')
-        print(soup11)
+        # print(soup11)
         # 查找所有的<a>标签
         links = soup11.find_all('a')
         print("***********************************************************************************")
@@ -173,7 +162,15 @@ if response.status_code == 200:
                             print("更换参数名称，状态码：", response.status_code,seek_find)
                             print(end_url)
                             break
-
+        test_url ＝ 'http://foodieguide.com/iptvsearch/hoteliptv.php?page=1' + end_url[1] + '&' + end_url[2]
+        print(test_url)
+        response = se.post(test_url, data=data, headers=headers)
+        if response.status_code == 200:
+            # 打印响应内容
+            html = response.text
+            
+            soup11 = BeautifulSoup(html, 'html.parser')
+            print(soup11)
     except Exception as e:
         print(f"=========================>>> error {e}")
 print("***********************************************************************************")
