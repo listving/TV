@@ -181,7 +181,7 @@ for i in diqu:
         if keypage == 1:
             url = 'http://foodieguide.com/iptvsearch/hoteliptv.php'
             print(url,i)
-            response = se.post(url, data=data, headers=headers, timeout=15)
+            response = se.post(url, data=data, headers=headers, timeout=30)
         else:
             if len(end_retu_url) > 0:
                 retu_url = end_retu_url.replace("?page=1", f'?page={i}')
