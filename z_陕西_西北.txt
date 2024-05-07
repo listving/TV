@@ -1,5 +1,4 @@
 央视｜电信,#genre#
-CCTV3_电信,http://61.185.200.137:9901/tsfile/live/0003_1.m3u8
 CCTV3_电信,http://61.185.200.245:9901/tsfile/live/0003_1.m3u8
 CCTV7_电信,http://61.185.200.245:9901/tsfile/live/0007_1.m3u8
 CCTV8_电信,http://61.185.200.20:9901/tsfile/live/0008_1.m3u8

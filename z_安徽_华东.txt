@@ -1,5 +1,4 @@
 央视｜电信,#genre#
-CCTV12_电信,http://220.180.229.250:9901/tsfile/live/0012_1.m3u8
 CCTV13_电信,http://220.180.229.250:9901/tsfile/live/0013_1.m3u8
 央视｜联通,#genre#
 CCTV1_联通,http://112.123.155.153:9901/tsfile/live/0001_1.m3u8
@@ -7,7 +6,6 @@ CCTV2_联通,http://112.123.155.153:9901/tsfile/live/0002_1.m3u8
 CCTV3_联通,http://112.123.155.153:9901/tsfile/live/0003_1.m3u8
 CCTV6_联通,http://112.123.155.153:9901/tsfile/live/0006_1.m3u8
 CCTV7_联通,http://112.123.155.153:9901/tsfile/live/0007_1.m3u8
-CCTV8_联通,http://112.123.155.153:9901/tsfile/live/0008_1.m3u8
 CCTV10_联通,http://112.123.155.153:9901/tsfile/live/0010_1.m3u8
 CCTV12_联通,http://112.123.155.153:9901/tsfile/live/0012_1.m3u8
 CCTV13_联通,http://112.123.155.153:9901/tsfile/live/0013_1.m3u8
