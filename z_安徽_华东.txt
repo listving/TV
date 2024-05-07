@@ -1,5 +1,3 @@
-央视｜电信,#genre#
-CCTV13_电信,http://220.180.229.250:9901/tsfile/live/0013_1.m3u8
 央视｜联通,#genre#
 CCTV1_联通,http://112.123.155.153:9901/tsfile/live/0001_1.m3u8
 CCTV2_联通,http://112.123.155.153:9901/tsfile/live/0002_1.m3u8
