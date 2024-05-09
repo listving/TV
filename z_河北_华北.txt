@@ -1,7 +1,6 @@
 央视｜电信,#genre#
 CCTV2_电信,http://111.225.114.68:808/tsfile/live/0002_1.m3u8
 CCTV3_电信,http://106.115.24.140:9901/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&down=1
-CCTV7_电信,http://111.225.114.68:808/tsfile/live/0007_1.m3u8
 CCTV怀旧剧场_电信,http://111.225.114.68:808/tsfile/live/1035_1.m3u8
 CCTV第一剧场_电信,http://111.225.114.68:808/tsfile/live/1033_1.m3u8
 CCTV音乐风云_电信,http://111.225.114.68:808/tsfile/live/1036_1.m3u8
@@ -14,8 +13,6 @@ CCTV6_联通,http://121.25.140.33:8888/rtp/239.253.92.193:6058
 CCTV9_联通,http://121.25.140.33:8888/rtp/239.253.92.107:6020
 CCTV台球_联通,http://121.25.140.33:8888/rtp/239.253.93.231:6409
 卫视｜电信,#genre#
-吉林卫视_电信,http://111.225.114.68:808/tsfile/live/1025_1.m3u8
-天津卫视_电信,http://106.115.24.140:9901/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&down=1
 山东卫视_电信,http://106.115.24.140:9901/tsfile/live/0131_1.m3u8?key=txiptv&playlive=1&down=1
 广东卫视_电信,http://106.115.24.140:9901/tsfile/live/0125_1.m3u8?key=txiptv&playlive=1&down=1
 海南卫视_电信,http://111.225.114.68:808/tsfile/live/1026_1.m3u8
@@ -28,12 +25,10 @@ CCTV台球_联通,http://121.25.140.33:8888/rtp/239.253.93.231:6409
 其他｜电信,#genre#
 高碑店1_电信,http://111.225.114.68:808/tsfile/live/1039_1.m3u8
 CETV2_电信,http://111.225.114.68:808/tsfile/live/1029_1.m3u8
-唐山新闻综合_电信,http://111.225.114.68:808/tsfile/live/1045_1.m3u8
 梨园_电信,http://106.115.24.140:9901/tsfile/live/1021_1.m3u8?key=txiptv&playlive=1&down=1
 金鹰卡通_电信,http://111.225.114.68:808/tsfile/live/1027_1.m3u8
 风云剧场_电信,http://106.115.24.140:9901/tsfile/live/1024_1.m3u8?key=txiptv&playlive=1&down=1
 风云足球_电信,http://106.115.24.140:9901/tsfile/live/1027_1.m3u8?key=txiptv&playlive=1&down=1
-魏县电视台_电信,http://106.115.24.140:9901/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&down=1
 其他｜联通,#genre#
 CETV4_联通,http://121.25.140.33:8888/rtp/239.253.92.200:6137
 CGTN俄语_联通,http://121.25.140.33:8888/rtp/239.253.93.199:6377
