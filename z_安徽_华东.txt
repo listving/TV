@@ -1,5 +1,4 @@
 央视｜联通,#genre#
-CCTV1_联通,http://112.123.155.153:9901/tsfile/live/0001_1.m3u8
 CCTV2_联通,http://112.123.155.153:9901/tsfile/live/0002_1.m3u8
 CCTV3_联通,http://112.123.155.153:9901/tsfile/live/0003_1.m3u8
 CCTV12_联通,http://112.123.155.153:9901/tsfile/live/0012_1.m3u8
