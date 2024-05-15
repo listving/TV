@@ -1,11 +1,5 @@
-央视｜电信,#genre#
-CCTV1_电信,http://112.101.78.50:9901/tsfile/live/0001_1.m3u8
-卫视｜电信,#genre#
-宁夏卫视_电信,http://112.101.78.50:9901/tsfile/live/0112_1.m3u8
-贵州卫视_电信,http://112.101.78.50:9901/tsfile/live/0120_1.m3u8
 其他｜电信,#genre#
 CETV1_电信,http://112.101.78.50:9901/tsfile/live/1003_1.m3u8
-黑龙江都市_电信,http://112.101.78.50:9901/tsfile/live/1005_1.m3u8
 其他｜联通,#genre#
 上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
@@ -18,11 +12,8 @@ CETV1_电信,http://112.101.78.50:9901/tsfile/live/1003_1.m3u8
 开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 文成综合_联通,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed
 新昌新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
-松原公共_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 松阳综合_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
-柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
-柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 洞头综合_联通,http://l.cztvcloud.com/channels/lantian/SXdongtou1/720p.m3u8
 缙云综合_联通,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8?zzhed
 苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
