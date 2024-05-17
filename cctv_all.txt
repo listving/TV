@@ -13,7 +13,6 @@
 重庆_西南_CCTV9_电信,http://113.251.228.247:7788/rtp/235.254.198.58:1508
 山西_华北_CCTV10_电信,http://113.26.66.220:8083/udp/239.1.1.17:8017
 江西_华东_CCTV10_电信,http://220.176.218.35:8888/udp/239.252.220.91:5140
-江西_华东_CCTV13_电信,http://220.176.218.35:8888/udp/239.252.219.139:5140
 山西_华北_CCTV16_电信,http://223.12.200.154:8083/udp/239.1.1.122:8122
 山西_华北_CCTV17_电信,http://113.26.66.220:8082/udp/239.1.1.23:8023
 未分类_24_Doc_其他,http://178.163.26.197:4022/udp/234.0.0.232:2000
@@ -69,8 +68,8 @@
 未分类_МУЗ_其他,http://178.163.118.177:4022/udp/234.0.0.96:2000
 未分类_Матч!_其他,http://178.163.54.50:4022/udp/234.0.0.204:2000
 未分类_МояПланета_其他,http://178.163.54.50:4022/udp/234.0.0.228:2000
-未分类_Мужскоекино_其他,http://178.163.118.177:4022/udp/234.0.0.213:2000
 未分类_Мужскоекино_其他,http://178.163.54.50:4022/udp/234.0.0.213:2000
+未分类_Мужскоекино_其他,http://178.163.118.177:4022/udp/234.0.0.213:2000
 未分类_Пятый_其他,http://178.163.26.197:4022/udp/234.0.0.205:2000
 未分类_Пятый_其他,http://178.163.49.116:4022/udp/234.0.0.205:2000
 未分类_РенТВ_其他,http://178.163.54.50:4022/udp/234.0.0.240:2000
@@ -114,8 +113,8 @@
 黑龙江_东北_上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
 黑龙江_东北_上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 黑龙江_东北_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
+黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_广安公共_联通,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
 黑龙江_东北_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 黑龙江_东北_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
