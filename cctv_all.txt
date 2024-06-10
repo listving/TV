@@ -30,8 +30,8 @@
 黑龙江_东北_上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
 黑龙江_东北_上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 黑龙江_东北_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
+黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_广安公共_联通,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
 黑龙江_东北_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 黑龙江_东北_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
