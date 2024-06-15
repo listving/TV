@@ -18,7 +18,6 @@
 重庆_西南_苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
 重庆_西南_萧山综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 重庆_西南_衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
-重庆_西南_衢州开化综合_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
 重庆_西南_衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 重庆_西南_衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
 重庆_西南_象山新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8?zzhed
@@ -44,7 +43,6 @@
 黑龙江_东北_苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
 黑龙江_东北_萧山综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 黑龙江_东北_衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
-黑龙江_东北_衢州开化综合_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
 黑龙江_东北_衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 黑龙江_东北_衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
 黑龙江_东北_诸暨新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed
