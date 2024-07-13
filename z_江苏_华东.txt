@@ -1,5 +1,2 @@
 央视｜移动,#genre#
 CCTV2_移动,http://223.112.219.174:9901/tsfile/live/0002_1.m3u8
-CCTV12_移动,http://223.112.219.174:9901/tsfile/live/0012_1.m3u8
-CCTV14_移动,http://223.112.219.174:9901/tsfile/live/0014_1.m3u8
-CCTV15_移动,http://223.112.219.174:9901/tsfile/live/0015_1.m3u8
