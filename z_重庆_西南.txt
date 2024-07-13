@@ -1,17 +1,14 @@
 央视｜电信,#genre#
 CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
-CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 CCTV13_电信,http://125.82.168.238:8888/rtp/235.254.198.9:1312
+CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 央视｜联通,#genre#
 CCTV1_联通,http://113.206.187.97:8001/udp/225.0.4.74:7980
 CCTV3_联通,http://113.206.187.97:8001/udp/225.0.4.142:7980
 CCTV8_联通,http://113.206.187.97:8001/udp/225.0.4.137:7980
-CCTV11_联通,http://113.206.187.97:8001/udp/225.0.4.218:7980
-CCTV17_联通,http://113.206.187.97:8001/udp/225.0.4.179:7980
 卫视｜联通,#genre#
 北京卫视_联通,http://113.206.187.97:8001/udp/225.0.4.78:7980
-天津卫视_联通,http://113.206.187.97:8001/udp/225.0.4.82:7980
 黑龙江卫视_联通,http://113.206.187.97:8001/udp/225.0.4.201:7980
 其他｜联通,#genre#
 IPTV3+_联通,http://113.206.187.97:8001/udp/225.0.4.51:7980
@@ -24,7 +21,6 @@ IPTV野外_联通,http://113.206.187.97:8001/udp/225.0.4.57:7980
 上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-动作影院_联通,http://113.206.187.97:8001/udp/225.0.4.170:7980
 嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 广安公共_联通,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
 庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
@@ -36,7 +32,6 @@ IPTV野外_联通,http://113.206.187.97:8001/udp/225.0.4.57:7980
 柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 永嘉新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8?zzhed
-纪实_联通,http://113.206.187.97:8001/udp/225.0.4.99:7980
 苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
 萧山综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
