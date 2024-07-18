@@ -1,6 +1,4 @@
 央视｜电信,#genre#
 CCTV7_电信,http://171.8.244.248:808/hls/7/index.m3u8
-央视｜联通,#genre#
-CCTV14_联通,http://222.137.229.233:808/hls/14/index.m3u8
 卫视｜联通,#genre#
 安徽卫视_联通,http://61.163.181.78:9901/tsfile/live/1038_1.m3u8
