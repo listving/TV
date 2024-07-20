@@ -17,8 +17,8 @@
 安徽_华东_CCTV7_联通,http://36.35.16.98:9901/tsfile/live/0007_1.m3u8
 河南_华中_CCTV7_电信,http://171.8.244.248:808/hls/7/index.m3u8
 浙江_华东_CCTV7_联通,http://60.12.183.46:9901/tsfile/live/0007_1.m3u8
-重庆_西南_CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 重庆_西南_CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
+重庆_西南_CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 安徽_华东_CCTV8_联通,http://112.123.155.153:9901/tsfile/live/0008_1.m3u8
 安徽_华东_CCTV8_联通,http://36.35.16.98:9901/tsfile/live/0001_41.m3u8
 浙江_华东_CCTV8_联通,http://60.12.183.46:9901/tsfile/live/0008_1.m3u8
@@ -41,7 +41,6 @@
 浙江_华东_CCTV15_联通,http://60.12.183.46:9901/tsfile/live/0015_1.m3u8
 安徽_华东_CCTV17_联通,http://36.35.16.98:9901/tsfile/live/0019_1.m3u8
 未分类_24Техно_其他,http://178.163.7.232:4022/udp/234.0.0.247:2000
-湖北_华中_CCTV164K_电信,http://111.175.60.226:4022/rtp/239.69.1.249:11136
 上海_华东_哈哈炫动_电信,http://116.230.78.113:4022/udp/239.45.1.55:5140
 北京_华北_CGTN新闻_联通,http://221.221.95.182:8888/rtp/239.3.1.215:4220
 北京_华北_厦门卫视_联通,http://114.246.182.66:4022/rtp/239.3.1.143:4120
@@ -122,9 +121,7 @@
 浙江_华东_陕西卫视_联通,http://60.12.183.46:9901/tsfile/live/0118_1.m3u8
 浙江_华东_黑龙江卫视_联通,http://60.12.183.46:9901/tsfile/live/1001_1.m3u8
 湖北_华中_东方卫视_电信,http://111.175.60.226:4022/rtp/239.254.96.142:8926
-湖北_华中_中文国际欧洲_电信,http://111.175.60.226:4022/rtp/239.69.1.231:11028
 湖北_华中_吉林卫视_电信,http://111.175.60.226:4022/rtp/239.69.1.212:10914
-湖北_华中_安徽卫视_电信,http://59.173.243.210:9901/tsfile/live/1025_1.m3u8
 湖北_华中_武汉教育_电信,http://111.175.60.226:4022/rtp/239.69.1.60:9994
 重庆_西南_上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 重庆_西南_上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
@@ -152,13 +149,12 @@
 重庆_西南_龙泉新闻综_联通,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8?zzhed
 重庆_西南_龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
 陕西_西北_兵器科技_电信,http://124.115.207.92:8081/rtp/239.111.205.74:5140
-陕西_西北_浙江卫视_电信,http://124.115.207.92:8081/rtp/239.112.205.64:5140
 黑龙江_东北_上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 黑龙江_东北_上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
 黑龙江_东北_上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 黑龙江_东北_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
+黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 黑龙江_东北_广安公共_联通,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
 黑龙江_东北_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 黑龙江_东北_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
