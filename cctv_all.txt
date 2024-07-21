@@ -1,5 +1,4 @@
 安徽_华东_CCTV1_联通,http://36.35.16.98:9901/tsfile/live/0001_18.m3u8
-广西_华南_CCTV1_电信,http://202.103.213.34:8888/udp/239.81.0.13:4056
 广西_华南_CCTV1_电信,http://219.159.147.195:9901/tsfile/live/1003_1.m3u8
 未分类_Amedia1_其他,http://178.163.7.232:4022/udp/234.0.0.155:2000
 浙江_华东_CCTV1_联通,http://60.12.183.46:9901/tsfile/live/0001_1.m3u8
@@ -15,10 +14,9 @@
 安徽_华东_CCTV6_联通,http://36.35.16.98:9901/tsfile/live/0006_1.m3u8
 浙江_华东_CCTV6_联通,http://60.12.183.46:9901/tsfile/live/0006_1.m3u8
 安徽_华东_CCTV7_联通,http://36.35.16.98:9901/tsfile/live/0007_1.m3u8
-河南_华中_CCTV7_电信,http://171.8.244.248:808/hls/7/index.m3u8
 浙江_华东_CCTV7_联通,http://60.12.183.46:9901/tsfile/live/0007_1.m3u8
-重庆_西南_CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 重庆_西南_CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
+重庆_西南_CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 安徽_华东_CCTV8_联通,http://112.123.155.153:9901/tsfile/live/0008_1.m3u8
 安徽_华东_CCTV8_联通,http://36.35.16.98:9901/tsfile/live/0001_41.m3u8
 浙江_华东_CCTV8_联通,http://60.12.183.46:9901/tsfile/live/0008_1.m3u8
@@ -41,7 +39,6 @@
 浙江_华东_CCTV15_联通,http://60.12.183.46:9901/tsfile/live/0015_1.m3u8
 安徽_华东_CCTV17_联通,http://36.35.16.98:9901/tsfile/live/0019_1.m3u8
 未分类_24Техно_其他,http://178.163.7.232:4022/udp/234.0.0.247:2000
-上海_华东_哈哈炫动_电信,http://116.230.78.113:4022/udp/239.45.1.55:5140
 北京_华北_CGTN新闻_联通,http://221.221.95.182:8888/rtp/239.3.1.215:4220
 北京_华北_厦门卫视_联通,http://114.246.182.66:4022/rtp/239.3.1.143:4120
 北京_华北_安徽卫视_联通,http://114.246.182.66:4022/rtp/239.3.1.211:8064
@@ -83,11 +80,6 @@
 安徽_华东_黑龙江卫视_联通,http://36.35.16.98:9901/tsfile/live/0001_21.m3u8
 山西_华北_吕梁二台_联通,http://124.165.251.82:9999/tsfile/live/1002_1.m3u8
 山西_华北_岚县电视台_联通,http://124.165.251.82:9999/tsfile/live/1000_1.m3u8
-广西_华南_南宁影视_电信,http://202.103.213.34:8888/udp/239.81.0.128:4056
-广西_华南_天津卫视_电信,http://202.103.213.34:8888/udp/239.81.0.113:4056
-广西_华南_山东教育卫视_电信,http://202.103.213.34:8888/udp/239.81.0.93:4056
-广西_华南_广西国际_电信,http://202.103.213.34:8888/udp/239.81.0.8:4056
-广西_华南_海南卫视_电信,http://202.103.213.34:8888/udp/239.81.0.48:4056
 广西_华南_金鹰卡通_电信,http://202.103.213.34:8888/udp/239.81.0.61:4056
 未分类_Eurunews_其他,http://178.163.7.232:4022/udp/234.0.0.248:2000
 未分类_ExtremeSport_其他,http://178.163.7.232:4022/udp/234.0.0.150:2000
@@ -148,13 +140,12 @@
 重庆_西南_金华兰溪综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
 重庆_西南_龙泉新闻综_联通,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8?zzhed
 重庆_西南_龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
-陕西_西北_兵器科技_电信,http://124.115.207.92:8081/rtp/239.111.205.74:5140
 黑龙江_东北_上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 黑龙江_东北_上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
 黑龙江_东北_上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 黑龙江_东北_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
+黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
 黑龙江_东北_广安公共_联通,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
 黑龙江_东北_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 黑龙江_东北_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
