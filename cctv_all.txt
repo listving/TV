@@ -14,8 +14,8 @@
 浙江_华东_CCTV6_联通,http://60.12.183.46:9901/tsfile/live/0006_1.m3u8
 安徽_华东_CCTV7_联通,http://36.35.16.98:9901/tsfile/live/0007_1.m3u8
 浙江_华东_CCTV7_联通,http://60.12.183.46:9901/tsfile/live/0007_1.m3u8
-重庆_西南_CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 重庆_西南_CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
+重庆_西南_CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 安徽_华东_CCTV8_联通,http://112.123.155.153:9901/tsfile/live/0008_1.m3u8
 安徽_华东_CCTV8_联通,http://36.35.16.98:9901/tsfile/live/0001_41.m3u8
 浙江_华东_CCTV8_联通,http://60.12.183.46:9901/tsfile/live/0008_1.m3u8
@@ -34,7 +34,6 @@
 安徽_华东_CCTV15_联通,http://36.35.16.98:9901/tsfile/live/0015_1.m3u8
 浙江_华东_CCTV15_联通,http://60.12.183.46:9901/tsfile/live/0015_1.m3u8
 安徽_华东_CCTV17_联通,http://36.35.16.98:9901/tsfile/live/0019_1.m3u8
-北京_华北_安徽卫视_联通,http://114.246.182.66:4022/rtp/239.3.1.211:8064
 四川_西南_优漫卡通_移动,http://117.177.180.53:8888/rtp/239.11.0.63:5140
 安徽_华东_东南卫视_联通,http://36.35.16.98:9901/tsfile/live/0001_5.m3u8
 安徽_华东_东方卫视_联通,http://36.35.16.98:9901/tsfile/live/0001_34.m3u8
@@ -108,7 +107,6 @@
 重庆_西南_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 重庆_西南_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 重庆_西南_新昌新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
-重庆_西南_松原公共_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 重庆_西南_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 重庆_西南_柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 重庆_西南_柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8

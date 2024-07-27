@@ -1,6 +1,6 @@
 央视｜电信,#genre#
-CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
+CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
 其他｜联通,#genre#
 上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
@@ -12,7 +12,6 @@ CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 新昌新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
-松原公共_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
