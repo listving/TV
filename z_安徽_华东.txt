@@ -8,7 +8,6 @@ CCTV5_联通,http://36.35.16.98:9901/tsfile/live/0005_1.m3u8
 CCTV6_联通,http://36.35.16.98:9901/tsfile/live/0006_1.m3u8
 CCTV7_联通,http://36.35.16.98:9901/tsfile/live/0007_1.m3u8
 CCTV8_联通,http://36.35.16.98:9901/tsfile/live/0001_41.m3u8
-CCTV8_联通,http://112.123.155.153:9901/tsfile/live/0008_1.m3u8
 CCTV9_联通,http://36.35.16.98:9901/tsfile/live/0009_1.m3u8
 CCTV10_联通,http://36.35.16.98:9901/tsfile/live/0010_1.m3u8
 CCTV11_联通,http://36.35.16.98:9901/tsfile/live/0011_1.m3u8
