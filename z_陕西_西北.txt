@@ -2,14 +2,8 @@
 CCTV2_电信,http://61.185.200.55:9901/tsfile/live/0002_1.m3u8
 CCTV4_电信,http://61.185.200.55:9901/tsfile/live/0004_1.m3u8
 CCTV7_电信,http://61.185.200.196:9901/tsfile/live/0007_1.m3u8
-CCTV11_电信,http://61.185.200.196:9901/tsfile/live/0011_1.m3u8
-CCTV12_电信,http://61.185.200.196:9901/tsfile/live/0012_1.m3u8
-CCTV12_电信,http://61.185.200.55:9901/tsfile/live/0012_1.m3u8
 CCTV13_电信,http://61.185.200.55:9901/tsfile/live/0013_1.m3u8
 卫视｜电信,#genre#
 四川卫视_电信,http://61.185.200.55:9901/tsfile/live/0123_1.m3u8
 天津卫视_电信,http://61.185.200.196:9901/tsfile/live/0135_1.m3u8
 山西卫视_电信,http://61.185.200.196:9901/tsfile/live/0118_1.m3u8
-河北卫视_电信,http://61.185.200.196:9901/tsfile/live/0117_1.m3u8
-湖北卫视_电信,http://61.185.200.55:9901/tsfile/live/0132_1.m3u8
-辽宁卫视_电信,http://61.185.200.196:9901/tsfile/live/0121_1.m3u8
