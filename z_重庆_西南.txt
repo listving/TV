@@ -1,8 +1,8 @@
 央视｜电信,#genre#
-CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
-CCTV13_电信,http://125.82.168.238:8888/rtp/235.254.198.9:1312
+CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
+CCTV13_电信,http://125.82.168.238:8888/rtp/235.254.198.9:1312
 央视｜联通,#genre#
 CCTV12_联通,http://27.11.55.145:8008/udp/225.0.4.129:7980
 CCTV15_联通,http://27.11.32.71:8001/udp/225.0.4.220:7980
@@ -12,8 +12,8 @@ CCTV17_联通,http://27.11.32.71:8001/udp/225.0.4.179:7980
 浙江卫视_联通,http://27.11.32.71:8001/udp/225.0.4.81:7980
 黑龙江卫视_联通,http://27.11.32.71:8001/udp/225.0.4.201:7980
 其他｜电信,#genre#
-CQTV都市_电信,http://125.82.168.238:8888/rtp/235.254.198.181:7980
 CQTV都市_电信,http://125.82.171.210:8888/rtp/235.254.198.181:7980
+CQTV都市_电信,http://125.82.168.238:8888/rtp/235.254.198.181:7980
 其他｜联通,#genre#
 IPTV6+_联通,http://27.11.32.71:8001/udp/225.0.4.50:7980
 CQTV娱乐_联通,http://27.11.32.71:8001/udp/225.0.4.65:7980
@@ -24,7 +24,6 @@ CQTV社会与法_联通,http://27.11.32.71:8001/udp/225.0.4.64:7980
 上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-喜剧影院_联通,http://27.11.32.71:8001/udp/225.0.4.169:7980
 嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
@@ -33,7 +32,6 @@ CQTV社会与法_联通,http://27.11.32.71:8001/udp/225.0.4.64:7980
 柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 永嘉新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8?zzhed
-苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
 衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
 衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
