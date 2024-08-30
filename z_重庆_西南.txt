@@ -1,15 +1,15 @@
 央视｜电信,#genre#
 CCTV7_电信,http://125.82.168.238:8888/rtp/235.254.198.56:1500
 CCTV7_电信,http://125.82.171.210:8888/rtp/235.254.198.56:1500
-CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 CCTV13_电信,http://125.82.168.238:8888/rtp/235.254.198.9:1312
+CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 央视｜联通,#genre#
 CCTV12_联通,http://27.11.55.145:8008/udp/225.0.4.129:7980
 卫视｜联通,#genre#
 浙江卫视_联通,http://27.11.32.71:8001/udp/225.0.4.81:7980
 其他｜电信,#genre#
-CQTV都市_电信,http://125.82.171.210:8888/rtp/235.254.198.181:7980
 CQTV都市_电信,http://125.82.168.238:8888/rtp/235.254.198.181:7980
+CQTV都市_电信,http://125.82.171.210:8888/rtp/235.254.198.181:7980
 其他｜联通,#genre#
 CQTV新农村_联通,http://27.11.32.71:8001/udp/225.0.4.70:7980
 上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
@@ -24,7 +24,6 @@ CQTV新农村_联通,http://27.11.32.71:8001/udp/225.0.4.70:7980
 松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
-永嘉新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8?zzhed
 衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
 衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
