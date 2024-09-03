@@ -1,8 +1,8 @@
 其他｜联通,#genre#
 上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
+嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 文成综合_联通,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed
@@ -15,6 +15,5 @@
 衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
 诸暨新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed
 辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
-遂昌综合_联通,http://l.cztvcloud.com/channels/lantian/SXsuichang1/720p.m3u8?zzhed
 龙泉新闻综_联通,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8?zzhed
 龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
