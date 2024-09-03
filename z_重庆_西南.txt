@@ -5,7 +5,6 @@ CCTV13_电信,http://125.82.168.238:8888/rtp/235.254.198.9:1312
 CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 其他｜联通,#genre#
 上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
-上虞新商都_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed
 上虞新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8?zzhed
 云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
