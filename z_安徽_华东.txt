@@ -1,11 +1,9 @@
 央视｜联通,#genre#
 CCTV1_联通,http://36.35.16.98:9901/tsfile/live/0001_18.m3u8
-CCTV2_联通,http://36.35.16.98:9901/tsfile/live/0002_1.m3u8
 CCTV3_联通,http://36.35.16.98:9901/tsfile/live/0001_40.m3u8
 CCTV4_联通,http://36.35.16.98:9901/tsfile/live/0004_1.m3u8
 CCTV5+_联通,http://36.35.16.98:9901/tsfile/live/0016_1.m3u8
 CCTV5_联通,http://36.35.16.98:9901/tsfile/live/0005_1.m3u8
-CCTV6_联通,http://36.35.16.98:9901/tsfile/live/0006_1.m3u8
 CCTV7_联通,http://36.35.16.98:9901/tsfile/live/0007_1.m3u8
 CCTV8_联通,http://36.35.16.98:9901/tsfile/live/0001_41.m3u8
 CCTV9_联通,http://36.35.16.98:9901/tsfile/live/0009_1.m3u8
