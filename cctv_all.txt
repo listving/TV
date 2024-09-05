@@ -68,8 +68,8 @@
 未分类_JimJam_其他,http://178.163.105.6:4022/udp/234.0.0.152:2000
 未分类_MTVDance_其他,http://178.163.12.198:4022/udp/234.0.0.233:2000
 未分类_RTGtv_其他,http://178.163.105.6:4022/udp/234.0.0.243:2000
-未分类_RUSONGTV_其他,http://178.163.15.116:4022/udp/234.0.0.179:2000
 未分类_RUSONGTV_其他,http://178.163.105.6:4022/udp/234.0.0.179:2000
+未分类_RUSONGTV_其他,http://178.163.15.116:4022/udp/234.0.0.179:2000
 未分类_БольшаяАзия_其他,http://178.163.105.6:4022/udp/234.0.0.10:2000
 未分类_Губерния_其他,http://178.163.20.194:4022/udp/234.0.0.7:2000
 未分类_Домашний_其他,http://178.163.105.6:4022/udp/234.0.0.191:2000
@@ -84,8 +84,8 @@
 未分类_Ностальгия_其他,http://178.163.20.194:4022/udp/234.0.0.190:2000
 未分类_Оружие_其他,http://178.163.12.198:4022/udp/234.0.0.97:2000
 未分类_Первый_其他,http://178.163.12.198:4022/udp/234.0.0.172:2000
-未分类_Первыйканал_其他,http://178.163.12.198:4022/udp/234.0.0.200:2000
 未分类_Первыйканал_其他,http://178.163.15.116:4022/udp/234.0.0.200:2000
+未分类_Первыйканал_其他,http://178.163.12.198:4022/udp/234.0.0.200:2000
 未分类_Первыйканал_其他,http://178.163.20.194:4022/udp/234.0.0.200:2000
 未分类_РенТВ_其他,http://178.163.20.194:4022/udp/234.0.0.240:2000
 未分类_РоссияК_其他,http://178.163.20.194:4022/udp/234.0.0.202:2000
@@ -107,8 +107,8 @@
 重庆_西南_龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
 黑龙江_东北_上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 黑龙江_东北_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?zzhed
+黑龙江_东北_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 黑龙江_东北_庆元综合_联通,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8?zzhed
 黑龙江_东北_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 黑龙江_东北_文成综合_联通,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed
