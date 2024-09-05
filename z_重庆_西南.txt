@@ -11,7 +11,6 @@ CCTV13_电信,http://125.82.171.210:8888/rtp/235.254.198.9:1312
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
 衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
-衢江新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed
 辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
 金华兰溪综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
 龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
