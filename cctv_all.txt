@@ -65,13 +65,13 @@
 未分类_БольшаяАзия_其他,http://178.163.105.6:4022/udp/234.0.0.10:2000
 未分类_Домашний_其他,http://178.163.105.6:4022/udp/234.0.0.191:2000
 未分类_КХЛ_其他,http://178.163.14.205:4022/udp/234.0.0.208:2000
-未分类_КалейдоскопТВ_其他,http://178.163.20.194:4022/udp/234.0.0.1:2000
 未分类_КалейдоскопТВ_其他,http://178.163.105.6:4022/udp/234.0.0.1:2000
+未分类_КалейдоскопТВ_其他,http://178.163.20.194:4022/udp/234.0.0.1:2000
 未分类_КаналDisney_其他,http://178.163.14.205:4022/udp/234.0.0.198:2000
 未分类_МИР_其他,http://178.163.105.6:4022/udp/234.0.0.5:2000
 未分类_Матч!НашСпорт_其他,http://178.163.12.198:4022/udp/234.0.0.95:2000
-未分类_Ностальгия_其他,http://178.163.15.116:4022/udp/234.0.0.190:2000
 未分类_Ностальгия_其他,http://178.163.20.194:4022/udp/234.0.0.190:2000
+未分类_Ностальгия_其他,http://178.163.15.116:4022/udp/234.0.0.190:2000
 未分类_Оружие_其他,http://178.163.12.198:4022/udp/234.0.0.97:2000
 未分类_Первый_其他,http://178.163.12.198:4022/udp/234.0.0.172:2000
 未分类_Первыйканал_其他,http://178.163.12.198:4022/udp/234.0.0.200:2000
@@ -83,7 +83,6 @@
 重庆_西南_上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
 重庆_西南_云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 重庆_西南_兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-重庆_西南_嵊州新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8?
 重庆_西南_开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 重庆_西南_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 重庆_西南_柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
@@ -101,8 +100,6 @@
 黑龙江_东北_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 黑龙江_东北_缙云综合_联通,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8?zzhed
 黑龙江_东北_苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
-黑龙江_东北_萧山综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 黑龙江_东北_衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
-黑龙江_东北_诸暨新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed
 黑龙江_东北_辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
 黑龙江_东北_龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed

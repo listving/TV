@@ -7,8 +7,6 @@
 松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 缙云综合_联通,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8?zzhed
 苍南新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
-萧山综合_联通,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
 衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
-诸暨新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed
 辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
 龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
