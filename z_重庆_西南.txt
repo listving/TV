@@ -1,12 +1,8 @@
 其他｜联通,#genre#
-上虞文化影院_联通,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8?zzhed
-云和新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed
 兰溪新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8?zzhed
-开化_联通,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed
 松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 柳河综合_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
 柳河综艺_联通,http://stream5.jlntv.cn/lh/sd/live.m3u8
-衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
 衢州衢江综合F_联通,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
 辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
 金华兰溪综合_联通,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
