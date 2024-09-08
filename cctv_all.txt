@@ -1,7 +1,7 @@
 安徽_华东_CCTV1_联通,http://36.35.16.98:9901/tsfile/live/0001_18.m3u8
 未分类_Amedia1_其他,http://178.163.20.194:4022/udp/234.0.0.155:2000
-未分类_2x2_其他,http://178.163.105.6:4022/udp/234.0.0.244:2000
 未分类_2x2_其他,http://178.163.12.198:4022/udp/234.0.0.244:2000
+未分类_2x2_其他,http://178.163.105.6:4022/udp/234.0.0.244:2000
 安徽_华东_CCTV3_联通,http://36.35.16.98:9901/tsfile/live/0001_40.m3u8
 未分类_TB3_其他,http://178.163.15.116:4022/udp/234.0.0.171:2000
 未分类_TB3_其他,http://178.163.20.194:4022/udp/234.0.0.171:2000
@@ -105,5 +105,4 @@
 黑龙江_东北_衢州开化国家公园_联通,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
 黑龙江_东北_诸暨新闻综合_联通,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed
 黑龙江_东北_辉南新闻_联通,http://stream5.jlntv.cn/hn/sd/live.m3u8
-黑龙江_东北_龙泉新闻综_联通,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8?zzhed
 黑龙江_东北_龙游生活娱乐_联通,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed
