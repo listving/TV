@@ -1,3 +1,3 @@
-黑龙江_东北_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 重庆_西南_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
 未分类_РусскийБестселлер_其他,http://178.163.20.194:4022/udp/234.0.0.250:2000
+黑龙江_东北_松原综合_联通,http://stream8.jlntv.cn/sytv2/sd/live.m3u8?_upt=c2dfffed1689853441
